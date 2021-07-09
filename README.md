@@ -1,11 +1,16 @@
 # Animated-inflection
 ## Group Members
 
-1- Majed Al-Swaeer - Team Leader
+1- Majed Al-Swaeer -**Team Leader**
+
 2- Bashar Taamneh
+
 3- Dima Zeqlam
+
 4- Mansoor Kalash
+
 5- Haneen Haddad
+
 6- Maiada Ibrahim
 
 ## Project's Description

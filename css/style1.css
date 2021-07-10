@@ -12,7 +12,7 @@ ul li img{
 } 
 
 button{
-
+    display: inline-block;
 }
 
 button:hover{

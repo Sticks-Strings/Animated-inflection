@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 li{
     display: inline-block;
 }
@@ -5,3 +6,26 @@ img{
     width: 200px;
     height: 200px;
 }
+=======
+ 
+div ul li {
+    display: inline-block;
+}
+
+ul li img{
+    width:200px;
+
+} 
+
+button:hover{
+    background-color: red;
+    color:white;
+}
+
+
+.guitar ul li {
+    display: inline-block;
+
+}
+
+>>>>>>> 5c474e9e58d74fb3a565e1646afd1b2ee298458f

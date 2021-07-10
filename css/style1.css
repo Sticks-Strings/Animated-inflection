@@ -1,6 +1,3 @@
-
-
-
  
 div ul li {
     display: inline-block;
@@ -11,11 +8,14 @@ ul li img{
 
 } 
 
-button{
-
-}
-
 button:hover{
     background-color: red;
     color:white;
 }
+
+
+.guitar ul li {
+    display: inline-block;
+
+}
+

@@ -3,17 +3,18 @@ let divEL = document.getElementById('drum')
 let allProducts = [];
 console.log(allProducts)
 
-let Product = function (namepro, imagepro, decription1) {
+let Product = function (namepro, imagepro, decription1,price) {
     this.name = namepro;
     this.imagepro = imagepro
-    console.log(this.imagepro)
+    //console.log(this.imagepro)
     this.decription = decription1;
+    this.price=price;
     allProducts.push(this);
 };
 
 function generateCatalog() {
-    new Product('drum1', "image/drum1.png", 'dsada');
-    new Product('drum2', "image/drum2.png", 'dsada');
+    new Product('drum1', "image/drum1.png", 'dsada','100');
+    new Product('drum2', "image/drum2.png", 'dsada','300');
 
 };
 
@@ -21,7 +22,8 @@ function generateCatalog() {
 generateCatalog();
 
 
-console.log(allProducts[0])
+console.log(allProducts)
+let iputEL;
 function renderpro() {
     for (let i = 0; i < allProducts.length; i++) {
         let liEL = document.createElement('li')
@@ -33,9 +35,14 @@ function renderpro() {
         let btnEL = document.createElement('button')
         btnEL.textContent = 'add to cart'
         btnEL.id = `${allProducts[i].name}`
-        
         btnEL.addEventListener('click', addtocart)
         liEL.appendChild(btnEL)
+         iputEL = document.createElement('input')
+        iputEL.type='number'
+        liEL.appendChild(iputEL)
+        let priceEL = document.createElement('p')
+        priceEL.textContent=`${allProducts[i].price}`
+        liEL.appendChild(priceEL)
         divEL.appendChild(liEL)
 
     }
@@ -43,19 +50,37 @@ function renderpro() {
 
 }
 renderpro();
-let cartneedarray = []
-let itemofcart = []
+
 
 function addtocart(event) {
 
     let clickedbtn = event.target.id
-    if(clickedbtn === allProducts )
-
-    {
-
+    for(let i=0;i<allProducts.length;i++){
+    if(clickedbtn == allProducts[i].name ){
+        new Cartpro(allProducts[i].name,allProducts[i].price ,iputEL.value);
     }
-
+    
 }
+
+console.log(cartneedarray)
+}
+
+let cartneedarray = []
+let Cartpro = function (nameproc,pricec,qunt) {
+    this.namec = nameproc;
+    this.pricec=pricec
+    this.qunt=qunt
+    cartneedarray.push(this);
+};
+
+
+
+
+
+
+
+
+
     // {let tbodyEL = document.getElementById('tbodycart')
     // let trEL= document.createElement('tr')   
     // let tdEL= document.createElement('td')  

@@ -1,12 +1,10 @@
 
-
-
  
-div ul li {
+main div ul li {
     display: inline-block;
 }
 
-ul li img{
+main ul li img{
     width:200px;
 
 } 
@@ -19,3 +17,72 @@ button:hover{
     background-color: red;
     color:white;
 }
+
+/* Footer Style */
+footer{
+    position: relative;
+  
+    background-color: black;
+}
+.footer_top{
+   
+    background-image: url("https://e1.nmcdn.io/classicalstation/wp-content/uploads/2020/02/music_classical_sheet_music_piano_piano_score_score_classical_music-984346.jpg/v:1-width:1900-height:527-fit:cover/music_classical_sheet_music_piano_piano_score_score_classical_music-984346.jpg?signature=2d49e581");
+    background-repeat: no-repeat;
+    background-color:rgb(99, 86, 86) ;
+    padding: 10px;
+    padding-left: 30px;
+    background-blend-mode: soft-light;
+    color: white;
+}
+.footer_top ul li:first-child img{
+    width:50px;
+    
+}
+.footer_top ul li{
+   
+}
+
+.footer_top ul li:last-child{
+    position: absolute;
+    right:250px;
+    
+
+}
+footer ul li{
+    display: inline-block;
+}
+.footer_bottom{
+  
+    background-color:#444;
+    padding: 10px;
+    color: #aaa;
+   
+  
+}
+.footer_social p{
+    position: absolute;
+    left:100px;
+    padding: 10px; 
+}
+
+#footerp{
+    width:30%;
+}
+.footer_social ul  {
+    text-align: right; 
+    padding: 5px; 
+
+  }
+  .footer_social img{
+    width:40px;
+  }
+  footer div ul li img:hover{
+      opacity: 0.7;
+  }
+
+  #tweet{
+      width: 35px;
+  }
+
+
+

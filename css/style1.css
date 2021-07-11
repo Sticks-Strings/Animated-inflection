@@ -223,7 +223,12 @@ transition: 0.4s;}
 
 
 
+#drum {
+display: inline-block;
+position: relative;
+top: 600px;
 
+}
 
 
 

@@ -1,4 +1,3 @@
-'use strict';
 
 let arrProd=[];
 let arrCart=[];
@@ -46,10 +45,10 @@ let pickProd=function(event) {
 };
 
 
-
+// runder the pruduct and add eventlistener
 let renderPruduct=function()
 {
-  let orodContainerEl = document.getElementById('pruduct-container1');
+  let orodContainerEl = document.getElementById('pruduct-container');
   for(let i=0;i<7;i++)
   {
     let productEl = document.createElement('div');
@@ -57,8 +56,10 @@ let renderPruduct=function()
     let img = document.createElement('img');
     img.setAttribute('src', `${arrProd[i].image}`);
 
-    let hpEl= document.createElement('h2');
-    hpEl.textContent= arrProd[i].pruductName;
+    let hpE1= document.createElement('h3');
+    hpE1.textContent= arrProd[i].pruductName;
+    let hpE2= document.createElement('h3');
+    hpE2.textContent= arrProd[i].price;
 
 
     let formEl = document.createElement('form');
@@ -77,7 +78,8 @@ let renderPruduct=function()
     formEl.appendChild(submitInput);
 
     productEl.appendChild(img);
-    productEl.appendChild(hpEl);
+    productEl.appendChild(hpE1);
+    productEl.appendChild(hpE2);
     productEl.appendChild(formEl);
 
     orodContainerEl.appendChild(productEl);

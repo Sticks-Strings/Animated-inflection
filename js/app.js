@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 let arrProd=[];
 let arrCart=[];
@@ -111,3 +112,6 @@ function savecartToLocalStorage() {
   let stringOb = JSON.stringify(arrCart);
   localStorage.setItem('cart', stringOb);
 }
+=======
+'use strict';
+>>>>>>> 898ff055424d37cd9da553e9dd25b6c22ad1a47e

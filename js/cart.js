@@ -6,9 +6,9 @@ let tableEL = document.getElementById('table')
 tableEL.appendChild(tbodyEL)
 
 function loadCart() {
-    cartItems = JSON.parse(localStorage.getItem('cartobject')) || [];
-    
-console.log(cartItems)
+    cartItems = JSON.parse(localStorage.getItem('cartobject'));
+
+    console.log(cartItems)
 
     let Cartpro = function (nameproc, pricec, qunt) {
         this.namec = nameproc
@@ -18,14 +18,12 @@ console.log(cartItems)
     }
 
     for (let index = 0; index < cartItems.length; index++) {
-        if (cartItems[index] !== null)  {
-            new Cartpro(cartItems[index].namec, cartItems[index].pricec, cartItems[index].qunt);
-        }
+
+        new Cartpro(cartItems[index].namec, cartItems[index].pricec, cartItems[index].qunt);
+
 
 
     }
-
-    console.log(cartarray)
 
 
 }
@@ -33,7 +31,7 @@ loadCart()
 
 
 function creattable() {
-    console.log(cartarray)
+    //     console.log(cartarray)
     for (let i = 0; i < cartarray.length; i++) {
 
         let trEL = document.createElement('tr')
@@ -65,30 +63,32 @@ function creattable() {
 creattable();
 
 function rmove(event) {
-    cartItems = JSON.parse(localStorage.getItem('cartobject'))
-    let clickedbtn = event.target.id
+    //cartItems = JSON.parse(localStorage.getItem('cartobject'))
+    let clickedbtn = Number(event.target.id)
     console.log(clickedbtn)
-    for (let i = 0; i < cartarray.length; i++) {
+    for (let i = 0; i < cartItems.length; i++) {
 
 
 
 
-         if (i == clickedbtn) {
+        if (i === clickedbtn) {
 
-            delete cartItems[i] // slice doesn't work not sure why
+            // delete cartItems[i] // slice doesn't work not sure why
+            cartItems.splice(cartItems, i);
+
 
         }
 
     }
 
-    cartnew = JSON.stringify(cartItems);
-    localStorage.setItem('cartobject', cartnew);
-    
+    // data = JSON.stringify(cartItems);
+    // localStorage.setItem('cartobject', data);
+    console.log(cartItems)
     cartarray = []
-    tbodyEL.remove(tableEL)
-    tbodyEL=document.createElement('tbody')
-    tableEL.appendChild(tbodyEL)
-    tbodyEL.id='tbodycart'
-     loadCart()
-    creattable()
+    // tbodyEL.remove(tableEL)
+    // tbodyEL=document.createElement('tbody')
+    // tableEL.appendChild(tbodyEL)
+    // tbodyEL.id='tbodycart'
+    loadCart()
+    // creattable()
 }

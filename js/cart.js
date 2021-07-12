@@ -1,6 +1,6 @@
 'use strict';
 let table = document.getElementById('table');
-console.log(cartArray);
+console.log(arrCart);
 
 // load from the local storage 
 function readlocalstorage() {
@@ -10,8 +10,8 @@ function readlocalstorage() {
     if (normalobj !== null) {
 
         for (let x = 0; x < normalobj.length; x++) {
-            new Cart(normalobj[x].addedPro, normalobj[x].price, normalobj[x].quantity);
-            cartArray[x].rendertable();
+            new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
+            arrCart[x].rendertable();
           
         }
     }}
@@ -27,18 +27,18 @@ function creatTable() {
     th.textContent = 'price';
     head.appendChild(th);
     th = document.createElement('th');
-    th.textContent = 'Quantity';
+    th.textContent = 'quant';
     head.appendChild(th);
     th = document.createElement('th');
-    th.textContent = 'Quantity Total';
+    th.textContent = 'Piece Total price';
     head.appendChild(th);
     th = document.createElement('th');
     th.textContent = 'remove from cart';
     head.appendChild(th);
     table.appendChild(head);
-    // for (let i = 0; i < cartArray.length; i++) {
+    // for (let i = 0; i < arrCart.length; i++) {
     //     let tdEL = document.createElement('td');
-    //     th.textContent = cartArray[i].p;
+    //     th.textContent = arrCart[i].p;
     //     head.appendChild(th);
     // }
     // let thel = document.createElement('th');
@@ -60,47 +60,53 @@ let removeButton = document.createElement('input');
 let removeEl = document.createElement('td');
 let key =[];
 let x=0;
-Cart.prototype.rendertable = function () {
+let cartindex;
+let text = document.createElement('p');
+CartAnimated.prototype.rendertable = function () {
     Total = 0;
      let trEl;
     // table.appendChild(trEl);
-    for (let y = 0; y < cartArray.length; y++) {
+    for (let y = 0; y < arrCart.length; y++) {
         trEl = document.createElement('tr');
         let td = document.createElement('td');
-        td.textContent = cartArray[y].addedPro  ;
+        td.textContent = arrCart[y].pruductName ;
         trEl.appendChild(td);
        td = document.createElement('td');
-        td.textContent = cartArray[y].price ;
+        td.textContent = arrCart[y].price ;
         trEl.appendChild(td);
         td = document.createElement('td');
-        if(cartArray[y].quantity === "")
+        if(arrCart[y].quant === "")
         td.textContent = "1" ;
         else
-        td.textContent = cartArray[y].quantity ;
+        td.textContent = arrCart[y].quant ;
         trEl.appendChild(td);
         td = document.createElement('td');
-        if(cartArray[y].quantity != ""){
-            quanttotal = cartArray[y].quantity * cartArray[y].price;
+        if(arrCart[y].quant != ""){
+            quanttotal = arrCart[y].quant * arrCart[y].price;
         td.textContent =  quanttotal;
-        Total +=  quanttotal;
+        Total +=  Number(quanttotal);
     }
         else{
-          Total += cartArray[y].price;
-        td.textContent = cartArray[y].price;
+          Total +=Number( arrCart[y].price);
+        td.textContent = arrCart[y].price;
           
         }
         trEl.appendChild(td);
         removeEl = document.createElement('td');
+   
         removeButton = document.createElement('input');
         removeButton.type = 'button';
         removeButton.value = 'X';
         removeButton.style.color = 'red';
-        removeButton.id="rem";
-        key[y]= y;
+        removeButton.id = `c${y}`;
+        cartindex=removeButton.id;
+        removeButton.addEventListener('click',handl);
+        // key[y]= y;
         // console.log(key[y]);
         // removeButton.style.textAlign = 'center';
         removeEl.appendChild(removeButton);
         trEl.appendChild(removeEl);
+
       
 
     }
@@ -109,19 +115,29 @@ Cart.prototype.rendertable = function () {
     this.saveToLocalStorage();
 }
 
+console.log(removeButton);
 
-let target = document.getElementById("rem");
+let indexc;
 function handl(event){
     console.log('clicked');
     // event.preventDefault();
-    removeButton.parentElement.parentElement.remove();
-    // localStorage.removeItem('yourKey');
+   let indext=cartindex.substring(1);
+   indexc=Number(indext);
+   console.log(`${indexc}`);
+    if(event.target.id === `c${indexc}`){
+     
+      removeButton.parentElement.parentElement.remove();
+    //  cart = {...cart,pruductName}
+    }
+    // removeButton.parentElement.parentElement.remove();
+    //  localStorage.removeItem();
 
 }
-
 readlocalstorage();
 
-for(let i=0;i<key.length;i++){
-    removeButton.addEventListener('click',handl);
-}
+
+// removeButton.addEventListener('click',handl);
+text.textContent = `Your orders grand total is : ${Total}`;
+let TotalContainer = document.getElementById("grandTotal");
+TotalContainer.appendChild(text);
 console.log(Total);

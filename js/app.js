@@ -62,18 +62,22 @@ function addtocart(event) {
     
 }
 
-console.log(cartneedarray)
+console.log(cartarray)
 }
 
-let cartneedarray = []
+let cartarray = []
 let Cartpro = function (nameproc,pricec,qunt) {
     this.namec = nameproc;
     this.pricec=pricec
     this.qunt=qunt
-    cartneedarray.push(this);
+    cartarray.push(this);
+    saveToLocalStorage();
 };
 
-
+function saveToLocalStorage() {
+    let data = JSON.stringify(cartarray);
+    localStorage.setItem('cartobject', data);
+}
 
 
 

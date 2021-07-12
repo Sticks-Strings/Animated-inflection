@@ -1,0 +1,33 @@
+#cart {
+    border-collapse: collapse;
+    margin: auto;
+    width: 65%;
+  }
+  
+  #cart thead tr th {
+    color: #777;
+    border-bottom: 3px solid #062f4f;
+    font-weight: bold;
+    padding: .5em 1em;
+  }
+  
+  
+  #cart tr td {
+    border-bottom: 1px solid #062f4f;
+    border-collapse: none;
+    color: #777;
+    padding: .5em 1em;
+    text-align: center;
+    width: auto;
+  }
+  
+  #cart tr td:last-child,
+  #cart tr th:last-child {
+    text-align: left;
+    width: 100%;
+  }
+  
+  #cart tr td:first-child {
+    color: red;
+    cursor: pointer;
+  }

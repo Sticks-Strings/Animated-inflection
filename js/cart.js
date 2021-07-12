@@ -1,24 +1,26 @@
 let carts;
 let cartarray = [];
 let cartItems;
-
+let tbodyEL = document.getElementById('tbodycart')
+let tableEL = document.getElementById('table')
+tableEL.appendChild(tbodyEL)
 
 function loadCart() {
     cartItems = JSON.parse(localStorage.getItem('cartobject')) || [];
-    console.log(cartItems)
+    
 
 
     let Cartpro = function (nameproc, pricec, qunt) {
         this.namec = nameproc
-        console.log()
         this.pricec = pricec
         this.qunt = qunt
         cartarray.push(this)
     }
 
     for (let index = 0; index < cartItems.length; index++) {
-
-        new Cartpro(cartItems[index].namec, cartItems[index].pricec, cartItems[index].qunt);
+        if (cartItems[index] == null) { index++ } else {
+            new Cartpro(cartItems[index].namec, cartItems[index].pricec, cartItems[index].qunt);
+        }
 
 
     }
@@ -28,9 +30,12 @@ function loadCart() {
 
 }
 loadCart()
+
+
 function creattable() {
+   
+ 
     for (let i = 0; i < cartarray.length; i++) {
-        let tbodyEL = document.getElementById('tbodycart')
 
         let trEL = document.createElement('tr')
         let tdELname = document.createElement('td')
@@ -51,7 +56,7 @@ function creattable() {
         let pEL = document.createElement('button')
         pEL.textContent = 'x'
         pEL.addEventListener('click', rmove)
-        pEL.id = `${cartarray[i].namec}`
+        pEL.id = i
         trEL.appendChild(pEL)
 
         tbodyEL.appendChild(trEL)
@@ -64,22 +69,25 @@ function rmove(event) {
     cartItems = JSON.parse(localStorage.getItem('cartobject'))
     let clickedbtn = event.target.id
     console.log(clickedbtn)
-    for (let i = 0; i < cartItems.length; i++) {
-       
+    for (let i = 0; i < cartarray.length; i++) {
 
 
-     
-        if (`${cartarray[i].namec}` == clickedbtn) {
 
-           delete cartItems[i] // slice doesn't work not sure why
+
+         if (i == clickedbtn) {
+
+            delete cartItems[i] // slice doesn't work not sure why
 
         }
+
     }
 
     cartnew = JSON.stringify(cartItems);
 
     localStorage.setItem('cartobject', cartnew);
-
-loadCart()
-creattable()
-}   
+    
+    cartarray = []
+    tbodyEL.remove(tableEL)
+    loadCart()
+    creattable()
+}

@@ -1,95 +1,163 @@
 'use strict';
-let divEL = document.getElementById('drum')
-let allProducts = [];
-console.log(allProducts)
+let arrProd=[];
 
-let Product = function (namepro, imagepro, decription1,price) {
-    this.name = namepro;
-    this.imagepro = imagepro
-    //console.log(this.imagepro)
-    this.decription = decription1;
+function Animated (image, pruductName,price){
+    this.image=image;
+    this.pruductName=pruductName;
     this.price=price;
-    allProducts.push(this);
-};
+    arrProd.push(this);
+    saveprodToLocalStorage();
+  }
+  let arrCart=[];
+  function CartAnimated ( pruductName,price,quant){
+    this.pruductName=pruductName;
+    this.price=price;
+    this.quant=quant;
+    arrCart.push(this);
+    this.saveToLocalStorage();
+  }
+//   CartAnimated.prototype.render = function () {
+//       let container=document.getElementsByName('coco')
+//     let pEl = document.createElement('h1');
+//     container.appendChild(pEl);
+//     pEl.textContent = `${this.pruductName}   price is $${this.price}   quantity ${this.quant} `
+// }
 
-function generateCatalog() {
-    new Product('drum1', "image/drum1.png", 'dsada','100');
-    new Product('drum2', "image/drum2.png", 'dsada','300');
+  let pickProd=function(event) {
+    event.preventDefault();
+    let whichProd = event.target.id;
+    let s = whichProd.substring(1);
+    let index = Number(s);
+    let qv1=event.target.q.value;
+    console.log(arrProd[index].pruductName,arrProd[index].price, qv1);
+  new CartAnimated (arrProd[index].pruductName,arrProd[index].price, qv1);
+  console.log(arrCart);
+  };
+// // runder the pruduct and add eventlistener
+//   let  renderPruduct=function()
+// {
+//     let orodContainerEl = document.getElementById('pruduct-container');
+//     for(let i=0;i<7;i++)
+//     {
+//         let productEl = document.createElement('div');
+//         let img = document.createElement('img');
+//         img.setAttribute('src', `${arrProd[i].image}`);
+//         let hpE1= document.createElement('h3');
+//         hpE1.textContent= arrProd[i].pruductName;
+//         let hpE2= document.createElement('h3');
+//         hpE2.textContent= arrProd[i].price;
+//         let formEl = document.createElement('form');
+//         formEl.setAttribute(`id`,`p${i}`);
+//        let newInput = document.createElement('input');
+//         newInput.setAttribute("id", `q${i}`);
+//         newInput.setAttribute('name',`q`);
+//         newInput.setAttribute('type','number')
+//         newInput.setAttribute("placeholder", "Quantity");
+//         let submitInput =document.createElement('input');
+//         submitInput.setAttribute('type','submit');
+//         submitInput.setAttribute('value','Add to Cart');
+//         formEl.appendChild(newInput);
+//         formEl.appendChild(submitInput);
+//         productEl.appendChild(img);
+//         productEl.appendChild(hpE1);
+//         productEl.appendChild(hpE2);
+//         productEl.appendChild(formEl);
+//         orodContainerEl.appendChild(productEl);
+//         formEl.addEventListener('submit',pickProd);
+//     }
+// }  
 
-};
-
-// Initialize the app by creating the big list of products with images and names
-generateCatalog();
-
-
-console.log(allProducts)
-let iputEL;
-function renderpro() {
-    for (let i = 0; i < allProducts.length; i++) {
-        let liEL = document.createElement('li')
-        let myImage = new Image(100, 33);
-        myImage.src = `${allProducts[i].imagepro}`;
-        liEL.title = `${allProducts[i].name}`
-        liEL.textContent = `${allProducts[i].decription}`
-        liEL.appendChild(myImage)
-        let btnEL = document.createElement('button')
-        btnEL.textContent = 'add to cart'
-        btnEL.id = `${allProducts[i].name}`
-        btnEL.addEventListener('click', addtocart)
-        liEL.appendChild(btnEL)
-         iputEL = document.createElement('input')
-        iputEL.type='number'
-        liEL.appendChild(iputEL)
-        let priceEL = document.createElement('p')
-        priceEL.textContent=`${allProducts[i].price}`
-        liEL.appendChild(priceEL)
-        divEL.appendChild(liEL)
-
-    }
-
-
+function genarateobject() {
+  new Animated('image/violin.1.png','D Z Strad Violin - Model 365' , '200');
+  new Animated('image/violin.2.png','D Z Strad N201 Violin with', '250');
+  new Animated('image/violin.3.png','D Z Strad Violin - Model 402', '100');
+  new Animated('image/violin.4.png','Z Strad 4-string Electric 4/4', '320');
+  new Animated('image/violin.5.png','Scott Cao STV017 Violin', '120');
+  new Animated('image/violin.6.png','Scott Cao 950 Violin Cannon 1743', '500');
+  new Animated('image/violin.7.png','Rene Jacquemin Violin, Mirecourt', '59');
+  new Animated('image/piano1.png','piano1', '20.000');
+  new Animated('image/piano2.png','piano1', '30.000');
+  new Animated('image/piano3.png','piano1',' 30.000');
+  new Animated('image/piano4.png','piano1',' 30.000');
+  new Animated('image/piano5.png','piano1',' 30.000');
+  new Animated('image/piano6.png', 'piano1','30.000');
+  new Animated('image/piano7.png','piano1', '30.000');
 }
-renderpro();
+genarateobject();
 
-
-function addtocart(event) {
-
-    let clickedbtn = event.target.id
-    for(let i=0;i<allProducts.length;i++){
-    if(clickedbtn == allProducts[i].name ){
-        new Cartpro(allProducts[i].name,allProducts[i].price ,iputEL.value);
-    }
-    
+function saveprodToLocalStorage() {
+    let stringObj = JSON.stringify(arrProd);
+    localStorage.setItem('prod', stringObj);
 }
 
-console.log(cartneedarray)
+// let ProductArr = [];
+
+// //Product constructer
+// function Product(productname, price) {
+
+//     this.productname = productname;
+//     this.price = price;
+//     this.quant = 0;
+//     ProductArr.push(this);
+// }
+
+// let cartArray = [];
+// function Cart(addedPro, price, quantity) {
+//     this.addedPro = addedPro;
+//     this.price = price;
+//     this.quantity = quantity;
+//     cartArray.push(this);
+//     this.saveToLocalStorage();
+// };
+
+
+
+console.log(arrProd);
+
+// add to local storage
+CartAnimated.prototype.saveToLocalStorage = function () {
+    let stringObj = JSON.stringify(arrCart);
+    localStorage.setItem('cart', stringObj);
 }
 
-let cartneedarray = []
-let Cartpro = function (nameproc,pricec,qunt) {
-    this.namec = nameproc;
-    this.pricec=pricec
-    this.qunt=qunt
-    cartneedarray.push(this);
-};
+//get element by id for the buttons
+// let index = [];
+// let buttons = [];
+// for (let i = 0; i < ProductArr.length; i++) {
+//     index[i] = 'button' + i;
+//     buttons[i] = document.getElementById(index[i]);
+//     // console.log(buttons[i]);
+// }
+
+// //get element by id for the inputes
+// let index2 = [];
+// let input = [];
+// for (let i = 0; i < ProductArr.length; i++) {
+//     index2[i] = 'input' + i;
+//     input[i] = document.getElementById(index2[i]);
+//     // console.log(input[i]);
+// }
+
+// function handlre for buttons
+// function toSelectbutton(event) {
+  
+//     for (let i = 0; i < ProductArr.length; i++) {
+//         if (index[i] === event.target.id) {
+
+//             let Pname = ProductArr[i].productname;
+//             let pprice = ProductArr[i].price;
+//             let Quantity = input[i].value;
+//             new Cart(Pname, pprice, Quantity);
+//             input[i].value = "";
+//             console.log(cartArray);
+//             // console.log(Pname);
+//             // console.log(pprice);
+//             // console.log(Quantity);
+//         }
+
+//     }
+
+// }
 
 
-
-
-
-
-
-
-
-    // {let tbodyEL = document.getElementById('tbodycart')
-    // let trEL= document.createElement('tr')   
-    // let tdEL= document.createElement('td')  
-    // tdEL.textContent=`${allProducts[i].name}`
-    // trEL.appendChild(tdEL)
-    // tbodyEL.appendChild(trEL)
-
-
-
-    // }
-
-
+// load from the local storage 

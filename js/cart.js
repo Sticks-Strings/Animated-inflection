@@ -80,5 +80,6 @@ function rmove(event) {
 
     localStorage.setItem('cartobject', cartnew);
 
-
+loadCart()
+creattable()
 }   

@@ -30,7 +30,7 @@ function creatTable() {
     th.textContent = 'Quantity';
     head.appendChild(th);
     th = document.createElement('th');
-    th.textContent = 'Total';
+    th.textContent = 'Quantity Total';
     head.appendChild(th);
     th = document.createElement('th');
     th.textContent = 'remove from cart';
@@ -52,7 +52,8 @@ function creatTable() {
 }
 
 creatTable();
-
+let quanttotal;
+let Total;
 
 let tdEl = document.createElement('td');
 let removeButton = document.createElement('input');
@@ -60,6 +61,7 @@ let removeEl = document.createElement('td');
 let key =[];
 let x=0;
 Cart.prototype.rendertable = function () {
+    Total = 0;
      let trEl;
     // table.appendChild(trEl);
     for (let y = 0; y < cartArray.length; y++) {
@@ -71,22 +73,31 @@ Cart.prototype.rendertable = function () {
         td.textContent = cartArray[y].price ;
         trEl.appendChild(td);
         td = document.createElement('td');
+        if(cartArray[y].quantity === "")
+        td.textContent = "1" ;
+        else
         td.textContent = cartArray[y].quantity ;
         trEl.appendChild(td);
         td = document.createElement('td');
-        if(cartArray[y].quantity != "")
-        td.textContent = cartArray[y].quantity * cartArray[y].price;
-        else
+        if(cartArray[y].quantity != ""){
+            quanttotal = cartArray[y].quantity * cartArray[y].price;
+        td.textContent =  quanttotal;
+        Total +=  quanttotal;
+    }
+        else{
+          Total += cartArray[y].price;
         td.textContent = cartArray[y].price;
+          
+        }
         trEl.appendChild(td);
-        
         removeEl = document.createElement('td');
         removeButton = document.createElement('input');
         removeButton.type = 'button';
         removeButton.value = 'X';
         removeButton.style.color = 'red';
         removeButton.id="rem";
-        key[y]= removeButton;
+        key[y]= y;
+        // console.log(key[y]);
         // removeButton.style.textAlign = 'center';
         removeEl.appendChild(removeButton);
         trEl.appendChild(removeEl);
@@ -98,7 +109,7 @@ Cart.prototype.rendertable = function () {
     this.saveToLocalStorage();
 }
 
-console.log(key);
+
 let target = document.getElementById("rem");
 function handl(event){
     console.log('clicked');
@@ -109,6 +120,8 @@ function handl(event){
 }
 
 readlocalstorage();
+
 for(let i=0;i<key.length;i++){
-key[i].addEventListener('click',handl);
+    removeButton.addEventListener('click',handl);
 }
+console.log(Total);

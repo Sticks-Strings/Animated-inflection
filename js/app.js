@@ -59,16 +59,15 @@ for (let i = 0; i < ProductArr.length; i++) {
 
 // function handlre for buttons
 function toSelectbutton(event) {
-    // let buttonlist = ['button0', 'button1','button1','button1','button1'];
+  
     for (let i = 0; i < ProductArr.length; i++) {
         if (index[i] === event.target.id) {
 
-            //   console.log('yes');
             let Pname = ProductArr[i].productname;
             let pprice = ProductArr[i].price;
             let Quantity = input[i].value;
             new Cart(Pname, pprice, Quantity);
-            input[i].value = " ";
+            input[i].value = "";
             console.log(cartArray);
             // console.log(Pname);
             // console.log(pprice);

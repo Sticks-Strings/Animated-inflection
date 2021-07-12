@@ -8,7 +8,7 @@ tableEL.appendChild(tbodyEL)
 function loadCart() {
     cartItems = JSON.parse(localStorage.getItem('cartobject')) || [];
     
-
+console.log(cartItems)
 
     let Cartpro = function (nameproc, pricec, qunt) {
         this.namec = nameproc
@@ -18,7 +18,7 @@ function loadCart() {
     }
 
     for (let index = 0; index < cartItems.length; index++) {
-        if (cartItems[index] == null) { index++ } else {
+        if (cartItems[index] !== null)  {
             new Cartpro(cartItems[index].namec, cartItems[index].pricec, cartItems[index].qunt);
         }
 
@@ -33,8 +33,7 @@ loadCart()
 
 
 function creattable() {
-   
- 
+    console.log(cartarray)
     for (let i = 0; i < cartarray.length; i++) {
 
         let trEL = document.createElement('tr')
@@ -83,11 +82,13 @@ function rmove(event) {
     }
 
     cartnew = JSON.stringify(cartItems);
-
     localStorage.setItem('cartobject', cartnew);
     
     cartarray = []
     tbodyEL.remove(tableEL)
-    loadCart()
+    tbodyEL=document.createElement('tbody')
+    tableEL.appendChild(tbodyEL)
+    tbodyEL.id='tbodycart'
+     loadCart()
     creattable()
 }

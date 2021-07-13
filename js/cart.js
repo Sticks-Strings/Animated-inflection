@@ -24,7 +24,7 @@ function readlocalstorage() {
 
 let th;
 function creatTable() {
-  table.textContent = ''
+  table.textContent = '';
   let head = document.createElement('tr');
   th = document.createElement('th');
   th.textContent = 'Product name';
@@ -75,7 +75,7 @@ let rendertable = function () {
       td.textContent = arrCart[y].quant;
     trEl.appendChild(td);
     td = document.createElement('td');
-    if (arrCart[y].quant != '') {
+    if (arrCart[y].quant !== '') {
       quanttotal = arrCart[y].quant * arrCart[y].price;
       td.textContent = quanttotal;
       Total += Number(quanttotal);
@@ -104,7 +104,8 @@ let rendertable = function () {
 
   }
   renderTotal();
-  CartAnimated.prototype.saveToLocalStorage(removeIndex);
+  // CartAnimated.prototype.saveToLocalStorage(removeIndex);
+  CartAnimated.prototype.saveToLocalStorage();
 };
 
 
@@ -119,15 +120,16 @@ function handl(event) {
     console.log(ev);
     if (event.target.id === `c${i}`) {
       Total -= Number(arrCart[i].price);
+      arrCart.splice(i,1);
       let row = document.getElementById(`r${i}`);
       row.parentNode.removeChild(row);
-      removeIndex.push(i);
-      
+      // removeIndex.push(i);
+
     }
-    
+
   }
-  CartAnimated.prototype.saveToLocalStorage(removeIndex);
-  // rendertable();
+  // CartAnimated.prototype.saveToLocalStorage(removeIndex);
+  CartAnimated.prototype.saveToLocalStorage();
   renderTotal();
 
 }
@@ -140,5 +142,4 @@ function renderTotal() {
   let TotalContainer = document.getElementById('grandTotal');
   TotalContainer.textContent = '';
   TotalContainer.appendChild(text);
-  console.log(Total);
 }

@@ -89,32 +89,33 @@ console.log(arrProd);
 //   localStorage.setItem('cart', stringObj);
 // };
 
-CartAnimated.prototype.saveToLocalStorage = function (indexremove=[]) {
-  let removeItemi = indexremove;
+// CartAnimated.prototype.saveToLocalStorage = function (indexremove=[]) {
+CartAnimated.prototype.saveToLocalStorage = function () {
+  // let removeItemi = indexremove;
   let stringObj;
-  let arrs =[];
+  // let arrs =[];
 
-  if (removeItemi !== undefined )
+  // if (removeItemi !== undefined )
 
-  {localStorage.removeItem('cart');
+  // {localStorage.removeItem('cart');
 
-    for (let i =0; i<arrCart.length;i++)
-    {
-      if (removeItemi.indexOf(i) === -1)
-      {
-        arrs[i]=arrCart[i];
-        stringObj = JSON.stringify(arrs);
-      }
+  //   for (let i =0; i<arrCart.length;i++)
+  //   {
+  //     if (removeItemi.indexOf(i) === -1)
+  //     {
+  //       arrs[i]=arrCart[i];
+  //       stringObj = JSON.stringify(arrs);
+  //     }
 
-    }
-
-
-  }
-  else{
-    stringObj = JSON.stringify(arrCart);
+  //   }
 
 
-  }
+  // }
+  // else{
+  stringObj = JSON.stringify(arrCart);
+
+
+  // }
   console.log( stringObj);
 
   localStorage.setItem('cart', stringObj);

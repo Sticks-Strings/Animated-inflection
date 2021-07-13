@@ -76,7 +76,7 @@ CartAnimated.prototype.saveToLocalStorage = function (indexremove=[]) {
 
     }
 
-    // localStorage.setItem('cart', stringObj);
+
   }
   else{
     stringObj = JSON.stringify(arrCart);

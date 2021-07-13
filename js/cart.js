@@ -16,28 +16,8 @@ function readlocalstorage() {
 
     }
     rendertable();
-    // if (removeIndex !== undefined) {
-
-
-    //   // removeIndex.indexOf(i) === -1)
-    //   for (let i = 0; i < normalobj.length; i++) {
-
-    //     normalobj[].rendertable();
-
-
-    //   }
-    // }
-
-    // localStorage.setItem('cart', stringObj);
-  }
-  //   else {
-  //     for (let i = 0; i < arrCart.length; i++) {
-  //       arrCart[x].rendertable();
-  //     }
-
-
-  //   }
-
+     }
+  
 }
 
 

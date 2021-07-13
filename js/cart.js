@@ -63,6 +63,8 @@ function creattable() {
 creattable();
 
 function rmove(event) {
+    //event.preventDefault();
+
     //cartItems = JSON.parse(localStorage.getItem('cartobject'))
     let clickedbtn = Number(event.target.id)
     console.log(clickedbtn)
@@ -71,10 +73,10 @@ function rmove(event) {
 
 
 
-        if (i === clickedbtn) {
+        if (i == clickedbtn) {
 
             // delete cartItems[i] // slice doesn't work not sure why
-            cartItems.splice(cartItems, i);
+            cartItems.splice(cartItems, 1);
 
 
         }
@@ -85,10 +87,10 @@ function rmove(event) {
     localStorage.setItem('cartobject', data);
     console.log(cartItems)
     cartarray = []
-    // tbodyEL.remove(tableEL)
-    // tbodyEL=document.createElement('tbody')
-    // tableEL.appendChild(tbodyEL)
-    // tbodyEL.id='tbodycart'
+    tbodyEL.remove(tableEL)
+    tbodyEL=document.createElement('tbody')
+    tableEL.appendChild(tbodyEL)
+    tbodyEL.id='tbodycart'
     loadCart()
-    // creattable()
+    creattable()
 }

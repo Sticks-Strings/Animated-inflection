@@ -6,7 +6,7 @@ let cartindex = [];
 let removeIndex = [];
 // load from the local storage
 function readlocalstorage() {
-  arrCart=[];
+  arrCart = [];
   let stobj = localStorage.getItem('cart');
   let normalobj = JSON.parse(stobj);
   if (normalobj !== null) {
@@ -15,14 +15,16 @@ function readlocalstorage() {
       new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
 
     }
+
     rendertable();
-     }
-  
+  }
+
 }
 
 
 let th;
 function creatTable() {
+  table.textContent = ''
   let head = document.createElement('tr');
   th = document.createElement('th');
   th.textContent = 'Product name';
@@ -92,6 +94,7 @@ let rendertable = function () {
     removeButton.style.color = 'red';
     removeButton.id = `c${y}`;
     cartindex.push(removeButton.id);
+
     removeButton.addEventListener('click', handl);
 
     removeEl.appendChild(removeButton);
@@ -100,7 +103,7 @@ let rendertable = function () {
     table.appendChild(trEl);
 
   }
-
+  renderTotal();
   CartAnimated.prototype.saveToLocalStorage(removeIndex);
 };
 
@@ -115,23 +118,27 @@ function handl(event) {
     let ev = event.target.id;
     console.log(ev);
     if (event.target.id === `c${i}`) {
+      Total -= Number(arrCart[i].price);
       let row = document.getElementById(`r${i}`);
       row.parentNode.removeChild(row);
       removeIndex.push(i);
-
+      
     }
-
-
+    
   }
   CartAnimated.prototype.saveToLocalStorage(removeIndex);
-
-
+  // rendertable();
+  renderTotal();
 
 }
 readlocalstorage();
 
 
-text.textContent = `Your orders grand total is : ${Total}`;
-let TotalContainer = document.getElementById('grandTotal');
-TotalContainer.appendChild(text);
-console.log(Total);
+function renderTotal() {
+  text.textContent ='';
+  text.textContent = `Your orders grand total is : ${Total}`;
+  let TotalContainer = document.getElementById('grandTotal');
+  TotalContainer.textContent = '';
+  TotalContainer.appendChild(text);
+  console.log(Total);
+}

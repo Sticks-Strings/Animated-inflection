@@ -6,7 +6,7 @@ let cartindex = [];
 let removeIndex = [];
 // load from the local storage
 function readlocalstorage() {
-  arrCart=[];
+  arrCart = [];
   let stobj = localStorage.getItem('cart');
   let normalobj = JSON.parse(stobj);
   if (normalobj !== null) {
@@ -15,14 +15,16 @@ function readlocalstorage() {
       new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
 
     }
+
     rendertable();
-     }
-  
+  }
+
 }
 
 
 let th;
 function creatTable() {
+  table.textContent = '';
   let head = document.createElement('tr');
   th = document.createElement('th');
   th.textContent = 'Product name';
@@ -73,7 +75,7 @@ let rendertable = function () {
       td.textContent = arrCart[y].quant;
     trEl.appendChild(td);
     td = document.createElement('td');
-    if (arrCart[y].quant != '') {
+    if (arrCart[y].quant !== '') {
       quanttotal = arrCart[y].quant * arrCart[y].price;
       td.textContent = quanttotal;
       Total += Number(quanttotal);
@@ -92,6 +94,7 @@ let rendertable = function () {
     removeButton.style.color = 'red';
     removeButton.id = `c${y}`;
     cartindex.push(removeButton.id);
+
     removeButton.addEventListener('click', handl);
 
     removeEl.appendChild(removeButton);
@@ -100,8 +103,8 @@ let rendertable = function () {
     table.appendChild(trEl);
 
   }
-
-  CartAnimated.prototype.saveToLocalStorage(removeIndex);
+  renderTotal();
+  CartAnimated.prototype.saveToLocalStorage();
 };
 
 
@@ -110,28 +113,32 @@ function handl(event) {
   console.log('clicked');
   event.preventDefault();
   for (let i = 0; i < cartindex.length; i++) {
-    // let indext=cartindex[i];
 
-    let ev = event.target.id;
-    console.log(ev);
     if (event.target.id === `c${i}`) {
-      let row = document.getElementById(`r${i}`);
-      row.parentNode.removeChild(row);
-      removeIndex.push(i);
+
+      Total -= Number(arrCart[i].price);
+      arrCart.splice(i, 1);
+
+      // [0,1] splice(0,1) -> 0 is the starting index, 1 is the number of indexes to be removed
+      // => [1] -> 1 will now have index 0 -> splice(0,1)
+      // => []
 
     }
 
-
   }
-  CartAnimated.prototype.saveToLocalStorage(removeIndex);
-
-
+  CartAnimated.prototype.saveToLocalStorage();
+  creatTable();
+  rendertable();
+  renderTotal();
 
 }
 readlocalstorage();
 
 
-text.textContent = `Your orders grand total is : ${Total}`;
-let TotalContainer = document.getElementById('grandTotal');
-TotalContainer.appendChild(text);
-console.log(Total);
+function renderTotal() {
+  text.textContent = '';
+  text.textContent = `Your orders grand total is : ${Total}`;
+  let TotalContainer = document.getElementById('grandTotal');
+  TotalContainer.textContent = '';
+  TotalContainer.appendChild(text);
+}

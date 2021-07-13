@@ -1,0 +1,92 @@
+*   {
+    box-sizing: border-box;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+body{
+    /* background-color: rgba(245, 245, 245, 0.76); */
+    background: url(https://img3.goodfon.com/wallpaper/nbig/b/78/skripka-smychek-violin-ch-b.jpg) no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    opacity: 0.99;
+    z-index: 0;
+}
+header{
+    padding: 15px;
+    background-color:rgba(19, 24, 27, 0.938);
+    position:sticky;
+    top: 0;
+    z-index: 10;
+    height: 12.8ch;
+    width: 100%;
+}
+
+.hedEl li{
+    display: inline-block;
+    border: 1px solid rgba(19, 24, 27, 0.938);
+    color: rgba(255, 255, 255, 0.774);
+    font-weight: 900;
+    font-size: 20px;
+    padding: 10px;
+    margin-left: 25px;
+    z-index: 2;
+}
+
+.hedEl li:nth-child(2){
+    position: relative;
+    left: 125ch;
+}
+.hedEl li:nth-child(1){
+    position: relative;
+    left: 122ch;
+}
+
+
+.hedEl li:hover{
+    background-color: rgb(251, 251, 251);
+    color: rgba(0, 0, 0, 0.589);
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.hedEl li a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.774);
+    }
+
+.hedEl li a:hover{
+        background-color: rgb(251, 251, 251);
+        color: rgba(0, 0, 0, 0.589);
+        transition: 0.5s;
+    }
+
+#logo{
+        display: inline-block;
+        position: absolute;
+        top: -4ch;
+        /* border-radius: 50%; */
+        left: 1%;
+        z-index: 1;
+        } 
+
+#p1{
+color: whitesmoke;
+width: 18ch;
+font-size: 3ch;
+font-weight: 100;
+font-family: fantasy;
+position: absolute;
+top: 4.5ch;
+        }        
+
+h2{
+    color: white;
+}
+p{
+    color: white;
+}

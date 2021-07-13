@@ -32,6 +32,8 @@ let renderPruduct=function()
     newInput.setAttribute('id', `q${i}`);
     newInput.setAttribute('name','q');
     newInput.setAttribute('type','number');
+    newInput.min='1';
+    newInput.required=true;
     newInput.setAttribute('placeholder', 'Quantity');
     let submitInput =document.createElement('input');
     submitInput.setAttribute('type','submit');

@@ -21,7 +21,7 @@ function generateCatalog() {
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
 
-
+let arrayofqunt=[]
 console.log(allProducts)
 let iputEL;
 function renderpro() {
@@ -39,6 +39,7 @@ function renderpro() {
         liEL.appendChild(btnEL)
          iputEL = document.createElement('input')
         iputEL.type='number'
+        iputEL.id=i
         liEL.appendChild(iputEL)
         let priceEL = document.createElement('p')
         priceEL.textContent=`${allProducts[i].price}`
@@ -57,7 +58,9 @@ function addtocart(event) {
     let clickedbtn = event.target.id
     for(let i=0;i<allProducts.length;i++){
     if(clickedbtn == allProducts[i].name ){
-        new Cartpro(allProducts[i].name,allProducts[i].price ,iputEL.value);
+        let qunt1=document.getElementById(`${i}`)
+
+        new Cartpro(allProducts[i].name,allProducts[i].price ,qunt1.value);
     }
     
 }

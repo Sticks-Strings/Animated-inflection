@@ -67,7 +67,7 @@ function rmove(event) {
 
     //cartItems = JSON.parse(localStorage.getItem('cartobject'))
     let clickedbtn = Number(event.target.id)
-    console.log(clickedbtn)
+    
     for (let i = 0; i < cartItems.length; i++) {
 
 
@@ -76,8 +76,8 @@ function rmove(event) {
         if (i == clickedbtn) {
 
             // delete cartItems[i] // slice doesn't work not sure why
-            cartItems.splice(cartItems, 1);
-
+            cartItems.splice(cartItems,1);
+console.log(cartItems)
 
         }
 

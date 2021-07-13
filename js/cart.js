@@ -101,13 +101,20 @@ function handl(event) {
     if (event.target.id === `c${i}`) {
       Total -= Number(arrCart[i].price);
       arrCart.splice(i,1);
-      let row = document.getElementById(`r${i}`);
-      row.parentNode.removeChild(row);
+    //   let row = document.getElementById(`r${i}`);
+    //   row.parentNode.removeChild(row);
       // removeIndex.push(i);
     }
   }
   // CartAnimated.prototype.saveToLocalStorage(removeIndex);
   CartAnimated.prototype.saveToLocalStorage();
+  arrCart = []
+  trEl.remove(table)
+  tbodyEL=document.createElement('tr')
+  tableEL.appendChild(tbodyEL)
+  tbodyEL.id='tbodycart'
+  rendertable();
+  creattable()
   renderTotal();
 }
 readlocalstorage();

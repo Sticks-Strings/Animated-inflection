@@ -45,12 +45,14 @@ let removeEl = document.createElement('td');
 let key = [];
 let x = 0;
 let text = document.createElement('p');
+let tbodyEL=document.createElement('tbody')
+
 let rendertable = function () {
   Total = 0;
-  let trEl;
+ 
   // table.appendChild(trEl);
   for (let y = 0; y < arrCart.length; y++) {
-    trEl = document.createElement('tr');
+  let  trEl = document.createElement('tr');
     trEl.setAttribute('id', `r${y}`);
     let td = document.createElement('td');
     td.textContent = arrCart[y].pruductName;
@@ -85,7 +87,8 @@ let rendertable = function () {
     removeButton.addEventListener('click', handl);
     removeEl.appendChild(removeButton);
     trEl.appendChild(removeEl);
-    table.appendChild(trEl);
+    tbodyEL.appendChild(trEl);
+    table.appendChild(tbodyEL);
   }
   renderTotal();
   // CartAnimated.prototype.saveToLocalStorage(removeIndex);
@@ -109,12 +112,13 @@ function handl(event) {
   // CartAnimated.prototype.saveToLocalStorage(removeIndex);
   CartAnimated.prototype.saveToLocalStorage();
   arrCart = []
-  trEl.remove(table)
-  tbodyEL=document.createElement('tr')
-  tableEL.appendChild(tbodyEL)
-  tbodyEL.id='tbodycart'
+  
+  tbodyEL.remove(table)
+    tbodyEL=document.createElement('tbody')
+    table.appendChild(tbodyEL)
+    tbodyEL.id='tbodycart'
   rendertable();
-  creattable()
+  creatTable()
   renderTotal();
 }
 readlocalstorage();

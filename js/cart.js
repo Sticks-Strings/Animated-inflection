@@ -29,9 +29,11 @@ function loadCart() {
 }
 loadCart()
 
-
+let total
 function creattable() {
     //     console.log(cartarray)
+total=0
+let arraytot=[]
     for (let i = 0; i < cartarray.length; i++) {
 
         let trEL = document.createElement('tr')
@@ -50,6 +52,14 @@ function creattable() {
         tdELqun.textContent = `${cartarray[i].qunt}`
         trEL.appendChild(tdELqun)
 
+
+        let tdELtotal = document.createElement('td')
+        tdELtotal.textContent = `${cartarray[i].qunt * cartarray[i].pricec}`
+        total=total+Number(`${cartarray[i].qunt * cartarray[i].pricec}`)
+        console.log(total)
+        trEL.appendChild(tdELtotal)
+        
+        
         let pEL = document.createElement('button')
         pEL.textContent = 'x'
         pEL.addEventListener('click', rmove)
@@ -59,9 +69,15 @@ function creattable() {
         tbodyEL.appendChild(trEL)
 
     }
+    
+ 
 }
 creattable();
-
+function renderfooter()
+{
+ let tdfooter =document.getElementById('footer')
+ tdfooter.textContent= `${total}`
+}
 function rmove(event) {
     //event.preventDefault();
 
@@ -76,8 +92,8 @@ function rmove(event) {
         if (i == clickedbtn) {
 
             // delete cartItems[i] // slice doesn't work not sure why
-            cartItems.splice(cartItems,1);
-console.log(cartItems)
+            cartItems.splice(i,1);
+            console.log(cartItems)
 
         }
 

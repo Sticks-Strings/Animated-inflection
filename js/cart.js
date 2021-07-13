@@ -76,7 +76,7 @@ creattable();
 function renderfooter()
 {
  let tdfooter =document.getElementById('footer')
- tdfooter.textContent= `${total}`
+  tdfooter.textContent= `${total}`
 }
 function rmove(event) {
     //event.preventDefault();

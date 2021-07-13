@@ -138,7 +138,7 @@ function handl(event){
     if(event.target.id === `c${i}`){
       let row = document.getElementById(`r${i}`);
       row.parentNode.removeChild(row);
-     let data= normalobj.splice(normalobj, i);
+     let data= normalobj.splice(i, 1);
       localStorage.setItem('cart',JSON.stringify(normalobj));
       
 

@@ -116,7 +116,7 @@ CartAnimated.prototype.saveToLocalStorage = function () {
 
 
   // }
-  console.log( stringObj);
+  // console.log( stringObj);
 
   localStorage.setItem('cart', stringObj);
 };

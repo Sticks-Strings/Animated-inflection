@@ -104,7 +104,6 @@ let rendertable = function () {
 
   }
   renderTotal();
-  // CartAnimated.prototype.saveToLocalStorage(removeIndex);
   CartAnimated.prototype.saveToLocalStorage();
 };
 
@@ -114,22 +113,22 @@ function handl(event) {
   console.log('clicked');
   event.preventDefault();
   for (let i = 0; i < cartindex.length; i++) {
-    // let indext=cartindex[i];
 
-    let ev = event.target.id;
-    console.log(ev);
     if (event.target.id === `c${i}`) {
+
       Total -= Number(arrCart[i].price);
-      arrCart.splice(i,1);
-      let row = document.getElementById(`r${i}`);
-      row.parentNode.removeChild(row);
-      // removeIndex.push(i);
+      arrCart.splice(i, 1);
+
+      // [0,1] splice(0,1) -> 0 is the starting index, 1 is the number of indexes to be removed
+      // => [1] -> 1 will now have index 0 -> splice(0,1)
+      // => []
 
     }
 
   }
-  // CartAnimated.prototype.saveToLocalStorage(removeIndex);
   CartAnimated.prototype.saveToLocalStorage();
+  creatTable();
+  rendertable();
   renderTotal();
 
 }
@@ -137,7 +136,7 @@ readlocalstorage();
 
 
 function renderTotal() {
-  text.textContent ='';
+  text.textContent = '';
   text.textContent = `Your orders grand total is : ${Total}`;
   let TotalContainer = document.getElementById('grandTotal');
   TotalContainer.textContent = '';

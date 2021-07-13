@@ -73,6 +73,7 @@ let arraytot=[]
  
 }
 creattable();
+renderfooter();
 function renderfooter()
 {
  let tdfooter =document.getElementById('footer')
@@ -109,4 +110,6 @@ function rmove(event) {
     tbodyEL.id='tbodycart'
     loadCart()
     creattable()
+    renderfooter();
+
 }

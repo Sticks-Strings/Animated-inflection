@@ -1,11 +1,12 @@
 'use strict';
 let table = document.getElementById('table');
 console.log(arrCart);
+let normalobj;
 let cartindex=[];
 // load from the local storage
 function readlocalstorage() {
   let stobj = localStorage.getItem('cart');
-  let normalobj = JSON.parse(stobj);
+   normalobj = JSON.parse(stobj);
 
   if (normalobj !== null) {
 
@@ -137,6 +138,8 @@ function handl(event){
     if(event.target.id === `c${i}`){
       let row = document.getElementById(`r${i}`);
       row.parentNode.removeChild(row);
+     let data= normalobj.splice(normalobj, i);
+      localStorage.setItem('cart',JSON.stringify(normalobj));
       
 
     }

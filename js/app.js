@@ -1,6 +1,5 @@
 'use strict';
 let arrProd=[];
-
 function Animated (image, pruductName,price){
   this.image=image;
   this.pruductName=pruductName;
@@ -16,8 +15,6 @@ function CartAnimated ( pruductName,price,quant){
   arrCart.push(this);
   this.saveToLocalStorage();
 }
-
-
 let pickProd=function(event) {
   event.preventDefault();
   let whichProd = event.target.id;
@@ -28,7 +25,6 @@ let pickProd=function(event) {
   new CartAnimated (arrProd[index].pruductName,arrProd[index].price, qv1);
   console.log(arrCart);
 };
-
 function genarateobject() {
   new Animated('image/violin.1.png','D Z Strad Violin - Model 365' , '200');
   new Animated('image/violin.2.png','D Z Strad N201 Violin with', '250');
@@ -46,27 +42,18 @@ function genarateobject() {
   new Animated('image/piano7.png','piano1', '30.000');
 }
 genarateobject();
-
 function saveprodToLocalStorage() {
   let stringObj = JSON.stringify(arrProd);
   localStorage.setItem('prod', stringObj);
 }
-
-
-
 console.log(arrProd);
-
 // add to local storage
 // CartAnimated.prototype.saveToLocalStorage = function (indexremove=[]) {
 //   let removeItemi = indexremove;
 //   let stringObj;
 //   let arrs =[];
-
 //   if (removeItemi !== undefined )
-
 //   {localStorage.removeItem('cart');
-
-
 //     for (let i =0; i<arrCart.length;i++)
 //     {
 //       if (removeItemi.indexOf(i) === -1)
@@ -74,48 +61,33 @@ console.log(arrProd);
 //         arrs[i]=arrCart[i];
 //         stringObj = JSON.stringify(arrs);
 //       }
-
 //     }
-
-
 //   }
 //   else{
 //     stringObj = JSON.stringify(arrCart);
-
-
 //   }
 //   console.log( stringObj);
-
 //   localStorage.setItem('cart', stringObj);
 // };
-
-CartAnimated.prototype.saveToLocalStorage = function (indexremove=[]) {
-  let removeItemi = indexremove;
+// CartAnimated.prototype.saveToLocalStorage = function (indexremove=[]) {
+CartAnimated.prototype.saveToLocalStorage = function () {
+  // let removeItemi = indexremove;
   let stringObj;
-  let arrs =[];
-
-  if (removeItemi !== undefined )
-
-  {localStorage.removeItem('cart');
-
-    for (let i =0; i<arrCart.length;i++)
-    {
-      if (removeItemi.indexOf(i) === -1)
-      {
-        arrs[i]=arrCart[i];
-        stringObj = JSON.stringify(arrs);
-      }
-
-    }
-
-
-  }
-  else{
-    stringObj = JSON.stringify(arrCart);
-
-
-  }
+  // let arrs =[];
+  // if (removeItemi !== undefined )
+  // {localStorage.removeItem('cart');
+  //   for (let i =0; i<arrCart.length;i++)
+  //   {
+  //     if (removeItemi.indexOf(i) === -1)
+  //     {
+  //       arrs[i]=arrCart[i];
+  //       stringObj = JSON.stringify(arrs);
+  //     }
+  //   }
+  // }
+  // else{
+  stringObj = JSON.stringify(arrCart);
+  // }
   console.log( stringObj);
-
   localStorage.setItem('cart', stringObj);
 };

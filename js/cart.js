@@ -1,5 +1,4 @@
 'use strict';
-
 let table = document.getElementById('table');
 console.log(arrCart);
 let cartindex = [];
@@ -10,21 +9,15 @@ function readlocalstorage() {
   let stobj = localStorage.getItem('cart');
   let normalobj = JSON.parse(stobj);
   if (normalobj !== null) {
-
     for (let x = 0; x < normalobj.length; x++) {
       new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
-
     }
-
     rendertable();
   }
-
 }
-
-
 let th;
 function creatTable() {
-  table.textContent = ''
+  table.textContent = '';
   let head = document.createElement('tr');
   th = document.createElement('th');
   th.textContent = 'Product name';
@@ -43,17 +36,14 @@ function creatTable() {
   head.appendChild(th);
   table.appendChild(head);
 }
-
 creatTable();
 let quanttotal;
 let Total;
-
 let tdEl = document.createElement('td');
 let removeButton = document.createElement('input');
 let removeEl = document.createElement('td');
 let key = [];
 let x = 0;
-
 let text = document.createElement('p');
 let rendertable = function () {
   Total = 0;
@@ -75,7 +65,7 @@ let rendertable = function () {
       td.textContent = arrCart[y].quant;
     trEl.appendChild(td);
     td = document.createElement('td');
-    if (arrCart[y].quant != '') {
+    if (arrCart[y].quant !== '') {
       quanttotal = arrCart[y].quant * arrCart[y].price;
       td.textContent = quanttotal;
       Total += Number(quanttotal);
@@ -83,62 +73,48 @@ let rendertable = function () {
     else {
       Total += Number(arrCart[y].price);
       td.textContent = arrCart[y].price;
-
     }
     trEl.appendChild(td);
     removeEl = document.createElement('td');
-
     removeButton = document.createElement('input');
     removeButton.type = 'button';
     removeButton.value = 'X';
     removeButton.style.color = 'red';
     removeButton.id = `c${y}`;
     cartindex.push(removeButton.id);
-
     removeButton.addEventListener('click', handl);
-
     removeEl.appendChild(removeButton);
     trEl.appendChild(removeEl);
-
     table.appendChild(trEl);
-
   }
   renderTotal();
-  CartAnimated.prototype.saveToLocalStorage(removeIndex);
+  // CartAnimated.prototype.saveToLocalStorage(removeIndex);
+  CartAnimated.prototype.saveToLocalStorage();
 };
-
-
-
 function handl(event) {
   console.log('clicked');
   event.preventDefault();
-  for (let i = 0; i < cartindex.length; i++) {
+  for (let i = 0; i < arrCart.length; i++) {
     // let indext=cartindex[i];
-
     let ev = event.target.id;
     console.log(ev);
     if (event.target.id === `c${i}`) {
       Total -= Number(arrCart[i].price);
+      arrCart.splice(i,1);
       let row = document.getElementById(`r${i}`);
       row.parentNode.removeChild(row);
-    //    removeIndex.push(i);
-      
+      // removeIndex.push(i);
     }
-    
   }
-  CartAnimated.prototype.saveToLocalStorage(removeIndex);
-  // rendertable();
+  // CartAnimated.prototype.saveToLocalStorage(removeIndex);
+  CartAnimated.prototype.saveToLocalStorage();
   renderTotal();
-
 }
 readlocalstorage();
-
-
 function renderTotal() {
   text.textContent ='';
   text.textContent = `Your orders grand total is : ${Total}`;
   let TotalContainer = document.getElementById('grandTotal');
   TotalContainer.textContent = '';
   TotalContainer.appendChild(text);
-  console.log(Total);
 }

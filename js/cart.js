@@ -53,7 +53,7 @@ function creatTable() {
 
 creatTable();
 let quanttotal;
-let Total;
+let Total=0;
 
 let tdEl = document.createElement('td');
 let removeButton = document.createElement('input');

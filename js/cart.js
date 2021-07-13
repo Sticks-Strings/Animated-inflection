@@ -81,8 +81,8 @@ function rmove(event) {
 
     }
 
-    // data = JSON.stringify(cartItems);
-    // localStorage.setItem('cartobject', data);
+    data = JSON.stringify(cartItems);
+    localStorage.setItem('cartobject', data);
     console.log(cartItems)
     cartarray = []
     // tbodyEL.remove(tableEL)

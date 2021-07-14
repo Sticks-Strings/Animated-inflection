@@ -1,29 +1,36 @@
 'use strict';
+// global values
 let prodtot=[];
 let arrProd=[];
+//A constructer object for products, second will be readed
 
 function Animated (image, pruductName,price){
   this.image=image;
   this.pruductName=pruductName;
   this.price=price;
-  arrProd.push(this);
-  saveprodToLocalStorage(this);
+  arrProd.push(this); // pushthe array to be an array of object
+  saveprodToLocalStorage(this); //store the products in our local storage
 }
+
 let arrCart=[];
+// constructer object for adding new products
 function CartAnimated ( pruductName,price,quant){
   this.pruductName=pruductName;
   this.price=price;
   this.quant=quant;
   arrCart.push(this);
-  this.saveToLocalStorage();
+  this.saveToLocalStorage();//store new products
 }
 
+
+//to store the added number of items in the cart, third thing item will be readed
 function savecartToLocalStorage() {
   let cartOB = JSON.stringify(prodtot);
   localStorage.setItem('cartprod', cartOB);
 }
-// document.querySelector('.cart span').textContent=prodtot.length;
-function cartreadlocalstorage() {
+
+//
+function cartreadlocalstorage() {//to read the the total number
   let cartstobj = localStorage.getItem('cartprod');
 
   let cartnormalobj = JSON.parse(cartstobj);
@@ -42,7 +49,6 @@ let pickProd=function(event) {
   let qv1=event.target.q.value;
   console.log(arrProd[index].pruductName,arrProd[index].price, qv1);
   new CartAnimated (arrProd[index].pruductName,arrProd[index].price, qv1);
-  // console.log(arrCart);
   prodtot.push(1);
   document.querySelector('.cart span').textContent=prodtot.length;
   savecartToLocalStorage();
@@ -81,78 +87,14 @@ function genarateobject() {
 
 
 }
-genarateobject();
+genarateobject();//first line will be readed
 
-function saveprodToLocalStorage() {
+function saveprodToLocalStorage() {//save the total number
   let stringObj = JSON.stringify(arrProd);
   localStorage.setItem('prod', stringObj);
 }
-
-
-
-console.log(arrProd);
-
-// add to local storage
-// CartAnimated.prototype.saveToLocalStorage = function (indexremove=[]) {
-//   let removeItemi = indexremove;
-//   let stringObj;
-//   let arrs =[];
-
-//   if (removeItemi !== undefined )
-
-//   {localStorage.removeItem('cart');
-
-
-//     for (let i =0; i<arrCart.length;i++)
-//     {
-//       if (removeItemi.indexOf(i) === -1)
-//       {
-//         arrs[i]=arrCart[i];
-//         stringObj = JSON.stringify(arrs);
-//       }
-
-//     }
-
-
-//   }
-//   else{
-//     stringObj = JSON.stringify(arrCart);
-
-
-//   }
-//   console.log( stringObj);
-
-//   localStorage.setItem('cart', stringObj);
-// };
-
-// CartAnimated.prototype.saveToLocalStorage = function (indexremove=[]) {
 CartAnimated.prototype.saveToLocalStorage = function () {
-  // let removeItemi = indexremove;
   let stringObj;
-  // let arrs =[];
-
-  // if (removeItemi !== undefined )
-
-  // {localStorage.removeItem('cart');
-
-  //   for (let i =0; i<arrCart.length;i++)
-  //   {
-  //     if (removeItemi.indexOf(i) === -1)
-  //     {
-  //       arrs[i]=arrCart[i];
-  //       stringObj = JSON.stringify(arrs);
-  //     }
-
-  //   }
-
-
-  // }
-  // else{
-  stringObj = JSON.stringify(arrCart);
-
-
-  // }
-  // console.log( stringObj);
-
-  localStorage.setItem('cart', stringObj);
+  stringObj = JSON.stringify(arrCart);//stringfy array of products
+  localStorage.setItem('cart', stringObj); //insert to local storage
 };

@@ -95,8 +95,8 @@ let rendertable = function () {
 
     removeButton = document.createElement('input');
     removeButton.type = 'button';
-    removeButton.value = 'X';
-    removeButton.style.color = 'red';
+    removeButton.value = 'Remove';
+    removeButton.style.color = 'white';
     removeButton.id = `c${y}`;
     cartindex.push(removeButton.id);
 

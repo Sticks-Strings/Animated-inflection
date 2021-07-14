@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&family=Teko&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/140656425d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/cart.css" />
-    <title>Animated-inflection-cart</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+            id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/stylecart.css">
+    <title>Cart</title>
     <style>
         #table {
 
@@ -28,20 +29,20 @@
 </head>
 
 <body>
-
     <header>
+
         <div class="hedEl">
             <ul>
-                <li>About us</li>
-                <li>Contact us</li>
-                <li><a href="index.html">Home</a> </li>
+                <li><a href="index.html"> <i class="fas fa-home "></i> Home</a> </li>
+                <li> <a href="aboutus.html"><i class="fas fa-address-card"></i> About us</a></li>
             </ul>
         </div>
-        <p id="p1">Animated-inflection</p>
         <div class="logo-video">
-            <video width="125" height="70" autoplay muted src="videos/animated tone.mp4"
-                type="animated tone.mp4"></video>
+            <a href="index.html"><img   id="logo" src="image/logo2.png" width="140" height="140"></a>
         </div>
+
+
+
     </header>
 
     <main>
@@ -49,31 +50,93 @@
             <div>
                 <table id="table"> </table>
             </div>
-            <div class="logo-video2">
-                <video width="300" height="350" autoplay muted src="videos/animated tone.mp4"
-                    type="animated tone.mp4"></video>
-            </div>
             <div id="grandTotal"></div>
         </div>
-   
+        <div class="container d-flex justify-content-center mt-5">
+            <div class="card">
+                <div>
+                    <div class="d-flex pt-3 pl-3">
+                        <div><img src="https://img.icons8.com/ios-filled/50/000000/visa.png" width="60" height="80" /></div>
+                        <div class="mt-3 pl-2"><span class="name">Card Number</span>
+                            <div> <span class="cross">&#10005&#10005&#10005&#10005</span><span class="pin ml-2">8780</span></div>
+                        </div>
+                    </div>
+                    <div class="py-2 px-3">
+                        <div class="first pl-2 d-flex py-2">
+                            <div class="form-check"> <input type="radio" name="optradio" class="form-check-input mt-3 dot" checked> </div>
+                            <div id="parentamount" class="border-left pl-2"><span class="head">Total amount due</span>
+                                <div><span class="dollar"></span><span id="amount" class="amount"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="py-2 px-3">
+                        <div class="second pl-2 d-flex py-2">
+                            <div class="form-check"> <input type="radio" name="optradio" class="form-check-input mt-3 dot"> </div>
+                            <div class="border-left pl-2"> <span id="tip" class="head">Tip us </span>
+                                <div class="d-flex"><input type="text" name="text" class="form-control ml-1" placeholder="0"></div>
+                            </div> <span class="dollar">JOD</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between px-3 pt-4 pb-3">
+                        <div><span class="back">Go back</span></div> <button  type="button" id="paybutton" class="btn btn-primary button">  Pay amount</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+
     <footer>
-        <!-- <div id="top">
+        <div id="topfir">
             <ul>
-                <li>Share your opinion</li>
-                <li>Terms and Conditions</li>
-                <li>FAQs</li>
-                <li>Site privacy</li>
-                <li>call us 0025-4244073283</li>
+                <li>Animated-inflection</li>
+                <li>Products</li>
+                <li>Links</li>
+                <li>Contact</li>
             </ul>
+        </div>
+        <div class="fot">
+            <div id="fotlogo">
+                <a href="index.html"><img  src="image/logo2.png" width="140" height="140"></a>
+                <p>Our store is more than just another average online retailer. We sell not only top quality products, but give our customers a positive online shopping experience. We work to make your shoping more enjoyable. </p>
+            </div>
+            <div id="top">
+                <ul>
+                    <li> <a href="#wh0" style="text-decoration: none;" >Western musical violings</a>  </li>
+                    <li> <a href="#wh15">Guitars Collection</a> </li>
+                    <li> <a href="#wh8">Master pieces of pianos</a> </li>
+                    <li><a href="#wh22">Musical Drums</a> </li>
+                </ul>
+            </div>
+            <div id="top1">
+                <ul>
+                    <li>FAQs</li>
+                    <li>Site privacy</li>
+                    <li>Share your opinion</li>
+                    <li>Terms and Conditions</li>
+                </ul>
+            </div>
+            <div id="top2">
+                <ul>
+                    <li><i class="fas fa-sms"></i> +962-7786214</li>
+                    <li><i class="fas fa-phone-square-alt"></i> +962-4578965</li>
+                    <li><i class="fas fa-envelope-square"></i> info@Animated Inflection.com</li>
+                    <li><i class="fas fa-home"></i> QueenAlia St. Amman, jordan</li>
+                </ul>
+            </div>
         </div>
         <hr>
         <div id="icon">
+            <p>Ⓒ 2021 Copyright: Animated Inflection </p>
             <i class="fab fa-facebook-square fa-2x"></i>
             <i class="fab fa-twitter-square fa-2x"></i>
             <i class="fab fa-instagram-square fa-2x"></i>
-        </div> -->
+        </div>
+        
+            
     </footer>
+    
     <script src="js/app.js"></script>
     <script src="js/cart.js"></script>
 

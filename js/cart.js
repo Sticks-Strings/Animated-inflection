@@ -1,4 +1,5 @@
 'use strict';
+
 let table = document.getElementById('table');
 console.log(arrCart);
 let cartindex = [];
@@ -9,12 +10,23 @@ function readlocalstorage() {
   let stobj = localStorage.getItem('cart');
   let normalobj = JSON.parse(stobj);
   if (normalobj !== null) {
+
+
     for (let x = 0; x < normalobj.length; x++) {
       new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
+
     }
+
+
     rendertable();
+
+
+
   }
+
 }
+
+
 let th;
 function creatTable() {
   table.textContent = '';
@@ -36,14 +48,17 @@ function creatTable() {
   head.appendChild(th);
   table.appendChild(head);
 }
+
 creatTable();
 let quanttotal;
-let Total;
+let Total=0;
+
 let tdEl = document.createElement('td');
 let removeButton = document.createElement('input');
 let removeEl = document.createElement('td');
 let key = [];
 let x = 0;
+
 let text = document.createElement('p');
 let rendertable = function () {
   Total = 0;
@@ -71,49 +86,116 @@ let rendertable = function () {
       Total += Number(quanttotal);
     }
     else {
-        Total += Number(arrCart[y].price);
-        td.textContent = arrCart[y].price;
+      Total += Number(arrCart[y].price);
+      td.textContent = arrCart[y].price;
+
     }
     trEl.appendChild(td);
     removeEl = document.createElement('td');
+
     removeButton = document.createElement('input');
     removeButton.type = 'button';
     removeButton.value = 'X';
     removeButton.style.color = 'red';
     removeButton.id = `c${y}`;
     cartindex.push(removeButton.id);
+
     removeButton.addEventListener('click', handl);
+
     removeEl.appendChild(removeButton);
     trEl.appendChild(removeEl);
+
     table.appendChild(trEl);
+
   }
   renderTotal();
-  // CartAnimated.prototype.saveToLocalStorage(removeIndex);
   CartAnimated.prototype.saveToLocalStorage();
 };
+
+
+
 function handl(event) {
-//   console.log('clicked');
+  console.log('clicked');
   event.preventDefault();
   for (let i = 0; i < cartindex.length; i++) {
-    // let indext=cartindex[i];
-    let ev = event.target.id;
-    console.log(ev);
+
     if (event.target.id === `c${i}`) {
-      Total =Total- Number(arrCart[i].price);
-      arrCart.splice(i,1);
-      let row = document.getElementById(`r${i}`);
-      row.parentNode.removeChild(row);
-        }
+
+      Total -= Number(arrCart[i].price);
+      arrCart.splice(i, 1);
+
+      // [0,1] splice(0,1) -> 0 is the starting index, 1 is the number of indexes to be removed
+      // => [1] -> 1 will now have index 0 -> splice(0,1)
+      // => []
+
+    }
+
   }
-  // CartAnimated.prototype.saveToLocalStorage(removeIndex);
   CartAnimated.prototype.saveToLocalStorage();
+  creatTable();
+  rendertable();
   renderTotal();
+
 }
 readlocalstorage();
+
+
 function renderTotal() {
-  text.textContent ='';
-  text.textContent = `Your orders grand total is : ${Total}`;
-  let TotalContainer = document.getElementById('grandTotal');
-  TotalContainer.textContent = '';
-  TotalContainer.appendChild(text);
+  if(Total!==null){
+    text.textContent = '';
+    if(Total!==0){
+
+      text.textContent = `Your orders grand total is : ${Total} JOD`;
+    }else{
+      text.textContent = 'Empty Cart';
+      localStorage.removeItem('cartprod');
+
+    }
+
+    let TotalContainer = document.getElementById('grandTotal');
+    TotalContainer.textContent = '';
+    TotalContainer.appendChild(text);
+    let parentEl = document.getElementById('parentamount');
+    let amountEl = document.getElementById('amount');
+    amountEl.textContent = `${Total}`+' JOD ';
+    parentEl.appendChild(amountEl);
+  }
+
+
 }
+
+let payel = document.getElementById('paybutton');
+
+payel.addEventListener('click',payevent);
+
+function payevent(event){
+  localStorage.removeItem('cart');
+  localStorage.removeItem('cartprod');
+  let Parent = document.getElementById('table');
+  while(Parent.hasChildNodes())
+  {
+    Parent.removeChild(Parent.firstChild);
+  }
+  if(Total!==0){
+    text.textContent='Empty cart';
+    let parentEl = document.getElementById('parentamount');
+    let amountEl = document.getElementById('amount');
+    amountEl.textContent = '0'+' JOD ';
+    parentEl.appendChild(amountEl);
+    swal("done!", "Payment successful!", "success");
+    for(let i=0 ; i<2000 ; i++){
+      window.location.href = 'index.html';
+    }
+  } else{
+    swal("Empty Cart!!", "Payment not successful!", "error");
+    for(let i=0 ; i<2000 ; i++){
+      window.location.href = 'index.html';
+    }
+  }
+  // window.location.href = 'index.html';
+  // renderTotal();
+  // alert('payment')
+
+
+}
+renderTotal();

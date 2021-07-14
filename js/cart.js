@@ -15,6 +15,9 @@ function readlocalstorage() {
     rendertable();
   }
 }
+
+
+
 let th;
 function creatTable() {
   table.textContent = '';
@@ -46,10 +49,13 @@ let key = [];
 let x = 0;
 let text = document.createElement('p');
 let tbodyEL=document.createElement('tbody')
+table.appendChild(tbodyEL)
+
+
 
 let rendertable = function () {
   Total = 0;
- 
+  
   // table.appendChild(trEl);
   for (let y = 0; y < arrCart.length; y++) {
   let  trEl = document.createElement('tr');
@@ -112,14 +118,18 @@ function handl(event) {
   // CartAnimated.prototype.saveToLocalStorage(removeIndex);
   CartAnimated.prototype.saveToLocalStorage();
   arrCart = []
-  
   tbodyEL.remove(table)
+
     tbodyEL=document.createElement('tbody')
     table.appendChild(tbodyEL)
     tbodyEL.id='tbodycart'
-  rendertable();
+   
+    
+  readlocalstorage() 
   creatTable()
+  //rendertable()
   renderTotal();
+ ;
 }
 readlocalstorage();
 function renderTotal() {

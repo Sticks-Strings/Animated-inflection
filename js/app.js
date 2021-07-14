@@ -29,7 +29,7 @@ let pickProd=function(event) {
   new CartAnimated (arrProd[index].pruductName,arrProd[index].price, qv1);
   // console.log(arrCart);
   prodtot = prodtot+1 ;
-  document.querySelector('.cart span').textContent=prodtot
+  document.querySelector('.cart span').textContent=prodtot;
 };
 
 function genarateobject() {

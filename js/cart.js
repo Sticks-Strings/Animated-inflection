@@ -141,4 +141,10 @@ function renderTotal() {
   let TotalContainer = document.getElementById('grandTotal');
   TotalContainer.textContent = '';
   TotalContainer.appendChild(text);
+  let parentEl = document.getElementById('parentamount');
+  let amountEl = document.getElementById('amount');
+  amountEl.textContent = `${Total}`+' JOD ';
+  parentEl.appendChild(amountEl);
+
+
 }

@@ -25,7 +25,7 @@ let renderPruduct=function()
     let hpE1= document.createElement('h3');
     hpE1.textContent= arrProd[i].pruductName;
     let hpE2= document.createElement('h3');
-    hpE2.textContent= arrProd[i].price;
+    hpE2.textContent= `Price: ${arrProd[i].price} JOD`;
     let formEl = document.createElement('form');
     formEl.setAttribute('id',`p${i}`);
     let newInput = document.createElement('input');

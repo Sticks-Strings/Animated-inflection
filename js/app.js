@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict';
 let arrProd=[];
 function Animated (image, pruductName,price){
@@ -91,3 +92,5 @@ CartAnimated.prototype.saveToLocalStorage = function () {
   console.log( stringObj);
   localStorage.setItem('cart', stringObj);
 };
+=======
+>>>>>>> 4f81e19a5455d41cad9904ade74184b983eb8e79

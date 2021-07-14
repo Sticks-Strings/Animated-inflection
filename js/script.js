@@ -21,6 +21,7 @@ let renderPruduct=function()
   for(let i=0;i<arrProd.length;i++)
   {
     let productEl = document.createElement('div');
+    productEl.id=`wh${i}`;
     let img = document.createElement('img');
     img.setAttribute('src', `${arrProd[i].image}`);
     let hpE1= document.createElement('h3');

@@ -363,9 +363,7 @@ user-select: none;
     padding: 5px;
     /* margin-left: 305px; */
     margin-bottom: 25px;
-    -webkit-user-select: none;
-- ms-user-select: none; 
-user-select: none; 
+    
 }
 .fot #top2{
     /* border: 1px solid red; */
@@ -422,4 +420,13 @@ font-size: 19px;
         color: rgba(251, 251, 251, 0.589);
         transform: scale(1.4);
         transition: 0.5s;
+}
+
+#top ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+
+}
+#top ul li a:hover{
+    transform: scale(1.7) ;
 }

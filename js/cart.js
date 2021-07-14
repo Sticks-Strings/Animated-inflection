@@ -11,7 +11,7 @@ function loadCart() {
     stringobj = localStorage.getItem('cartobject')
     cartItems = JSON.parse(stringobj);
     if (cartItems !== null) {
-        console.log(cartItems)
+      //  console.log(cartItems)
 
         let Cartpro = function (nameproc, pricec, qunt) {
             this.namec = nameproc
@@ -66,7 +66,7 @@ function creattable() {
         let tdELtotal = document.createElement('td')
         tdELtotal.textContent = `${cartarray[i].qunt * cartarray[i].pricec}`
         total = total + (cartarray[i].qunt * cartarray[i].pricec)
-        console.log(total)
+        //console.log(total)
         trEL.appendChild(tdELtotal)
 
 
@@ -106,7 +106,7 @@ function rmove(event) {
 
             // delete cartItems[i] // slice doesn't work not sure why
             cartItems.splice(i, 1);
-            console.log(cartItems)
+           // console.log(cartItems)
 
         }
 
@@ -114,7 +114,7 @@ function rmove(event) {
 
     data = JSON.stringify(cartItems);
     localStorage.setItem('cartobject', data);
-    console.log(cartItems)
+   // console.log(cartItems)
     cartarray = []
     tbodyEL.remove(tableEL)
     tbodyEL = document.createElement('tbody')

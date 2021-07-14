@@ -379,8 +379,6 @@ font-size: 19px;
 }
 #myDIV{
     display:none;
-    position: relative;
-    right: 80vh;
    
 }
 #buy{
@@ -390,4 +388,7 @@ font-size: 19px;
    display:block;
    bottom: 35vh;
    left: 88vh;
+}
+#shopping{
+    width: 100vh;
 }

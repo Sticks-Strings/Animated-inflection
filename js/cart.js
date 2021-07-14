@@ -30,6 +30,14 @@ function readlocalstorage() {
 let th;
 function creatTable() {
   table.textContent = '';
+  let head0 = document.createElement('tr');
+  let th0 = document.createElement('td');
+  th0.textContent = 'shopping cart';
+  head0.id="shopping"
+  head0.appendChild(th0)
+  table.appendChild(head0)
+
+  
   let head = document.createElement('tr');
   th = document.createElement('th');
   th.textContent = 'Product name';
@@ -209,7 +217,11 @@ let btnbuyEL=document.getElementById('buy')
 
               if (cardshow.style.display === "none") {
                 cardshow.style.display = "block";
+                btnbuyEL.removeEventListener();
               } else {
-                cardshow.style.display = "none";
+               
+
+                cardshow.style.display = "block"
+
               }
             }

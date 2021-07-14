@@ -15,7 +15,7 @@ body{
     z-index: 0;
 }
 main{
-    height: 180%;
+    height: 300%;
 
 }
 header{
@@ -146,8 +146,8 @@ p{
 .container {
     width: 25%;
     position: relative;
-    top:-6%;
-    right: 6%;
+    top:-4%;
+    right: 1%;
 }
 
 .card {
@@ -390,4 +390,23 @@ font-size: 19px;
 }
 #top ul li a:hover{
     transform: scale(1.7) ;
+}
+
+
+#myDIV{
+    display:none;
+}
+.cartbody #buy{
+    border: 1px solid rgba(255, 255, 255, 0.575);
+    padding: 3px;
+    position: relative;
+    left: 32%;
+    bottom:3%;
+    width: 100px;
+    height: 35px;
+border-radius: 5px;
+background-color: rgb(36,35,35);
+color: white;
+font-size: 20px;
+font-weight: bolder;
 }

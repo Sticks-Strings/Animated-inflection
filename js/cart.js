@@ -180,15 +180,15 @@ function payevent(event){
     text.textContent='Empty cart';
     let parentEl = document.getElementById('parentamount');
     let amountEl = document.getElementById('amount');
-    amountEl.textContent = '0'+' JOD ';
+    amountEl.textContent = '0 '+' JOD';
     parentEl.appendChild(amountEl);
     swal("done!", "Payment successful!", "success");
-    for(let i=0 ; i<2000 ; i++){
+    for(let i=0 ; i<3000 ; i++){
       window.location.href = 'index.html';
     }
   } else{
     swal("Empty Cart!!", "Payment not successful!", "error");
-    for(let i=0 ; i<2000 ; i++){
+    for(let i=0 ; i<3000 ; i++){
       window.location.href = 'index.html';
     }
   }
@@ -199,3 +199,14 @@ function payevent(event){
 
 }
 renderTotal();
+let btnbuyEL=document.getElementById('buy')
+            btnbuyEL.addEventListener("click", myFunction)
+            function myFunction() {
+              let cardshow = document.getElementById("myDIV");
+              if (cardshow.style.display === "none") {
+                cardshow.style.display = "block";
+                btnbuyEL.removeEventListener();
+              } else {
+                cardshow.style.display = "block"
+              }
+            }

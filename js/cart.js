@@ -199,3 +199,17 @@ function payevent(event){
 
 }
 renderTotal();
+
+
+
+let btnbuyEL=document.getElementById('buy')
+            btnbuyEL.addEventListener("click", myFunction)
+            function myFunction() {
+              let cardshow = document.getElementById("myDIV");
+
+              if (cardshow.style.display === "none") {
+                cardshow.style.display = "block";
+              } else {
+                cardshow.style.display = "none";
+              }
+            }

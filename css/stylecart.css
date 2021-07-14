@@ -377,3 +377,17 @@ font-size: 19px;
         transform: scale(1.4);
         transition: 0.5s;
 }
+#myDIV{
+    display:none;
+    position: relative;
+    right: 80vh;
+   
+}
+#buy{
+    width: 63vh;
+    height: 5vh;
+  position: relative;
+   display:block;
+   bottom: 35vh;
+   left: 88vh;
+}

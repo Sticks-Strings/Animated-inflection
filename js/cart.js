@@ -6,23 +6,30 @@ let cartindex = [];
 let removeIndex = [];
 // load from the local storage
 function readlocalstorage() {
-  arrCart=[];
+  arrCart = [];
   let stobj = localStorage.getItem('cart');
   let normalobj = JSON.parse(stobj);
   if (normalobj !== null) {
+
 
     for (let x = 0; x < normalobj.length; x++) {
       new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
 
     }
+
+
     rendertable();
-     }
-  
+
+
+
+  }
+
 }
 
 
 let th;
 function creatTable() {
+  table.textContent = '';
   let head = document.createElement('tr');
   th = document.createElement('th');
   th.textContent = 'Product name';
@@ -44,7 +51,7 @@ function creatTable() {
 
 creatTable();
 let quanttotal;
-let Total;
+let Total=0;
 
 let tdEl = document.createElement('td');
 let removeButton = document.createElement('input');
@@ -73,7 +80,7 @@ let rendertable = function () {
       td.textContent = arrCart[y].quant;
     trEl.appendChild(td);
     td = document.createElement('td');
-    if (arrCart[y].quant != '') {
+    if (arrCart[y].quant !== '') {
       quanttotal = arrCart[y].quant * arrCart[y].price;
       td.textContent = quanttotal;
       Total += Number(quanttotal);
@@ -92,6 +99,7 @@ let rendertable = function () {
     removeButton.style.color = 'red';
     removeButton.id = `c${y}`;
     cartindex.push(removeButton.id);
+
     removeButton.addEventListener('click', handl);
 
     removeEl.appendChild(removeButton);
@@ -100,8 +108,8 @@ let rendertable = function () {
     table.appendChild(trEl);
 
   }
-
-  CartAnimated.prototype.saveToLocalStorage(removeIndex);
+  renderTotal();
+  CartAnimated.prototype.saveToLocalStorage();
 };
 
 
@@ -110,28 +118,84 @@ function handl(event) {
   console.log('clicked');
   event.preventDefault();
   for (let i = 0; i < cartindex.length; i++) {
-    // let indext=cartindex[i];
 
-    let ev = event.target.id;
-    console.log(ev);
     if (event.target.id === `c${i}`) {
-      let row = document.getElementById(`r${i}`);
-      row.parentNode.removeChild(row);
-      removeIndex.push(i);
+
+      Total -= Number(arrCart[i].price);
+      arrCart.splice(i, 1);
+
+      // [0,1] splice(0,1) -> 0 is the starting index, 1 is the number of indexes to be removed
+      // => [1] -> 1 will now have index 0 -> splice(0,1)
+      // => []
 
     }
 
-
   }
-  CartAnimated.prototype.saveToLocalStorage(removeIndex);
-
-
+  CartAnimated.prototype.saveToLocalStorage();
+  creatTable();
+  rendertable();
+  renderTotal();
 
 }
 readlocalstorage();
 
 
-text.textContent = `Your orders grand total is : ${Total}`;
-let TotalContainer = document.getElementById('grandTotal');
-TotalContainer.appendChild(text);
-console.log(Total);
+function renderTotal() {
+  if(Total!==null){
+    text.textContent = '';
+    if(Total!==0){
+
+      text.textContent = `Your orders grand total is : ${Total} JOD`;
+    }else{
+      text.textContent = 'Empty Cart';
+      localStorage.removeItem('cartprod');
+
+    }
+
+    let TotalContainer = document.getElementById('grandTotal');
+    TotalContainer.textContent = '';
+    TotalContainer.appendChild(text);
+    let parentEl = document.getElementById('parentamount');
+    let amountEl = document.getElementById('amount');
+    amountEl.textContent = `${Total}`+' JOD ';
+    parentEl.appendChild(amountEl);
+  }
+
+
+}
+
+let payel = document.getElementById('paybutton');
+
+payel.addEventListener('click',payevent);
+
+function payevent(event){
+  localStorage.removeItem('cart');
+  localStorage.removeItem('cartprod');
+  let Parent = document.getElementById('table');
+  while(Parent.hasChildNodes())
+  {
+    Parent.removeChild(Parent.firstChild);
+  }
+  if(Total!==0){
+    text.textContent='Empty cart';
+    let parentEl = document.getElementById('parentamount');
+    let amountEl = document.getElementById('amount');
+    amountEl.textContent = '0'+' JOD ';
+    parentEl.appendChild(amountEl);
+    swal("done!", "Payment successful!", "success");
+    for(let i=0 ; i<2000 ; i++){
+      window.location.href = 'index.html';
+    }
+  } else{
+    swal("Empty Cart!!", "Payment not successful!", "error");
+    for(let i=0 ; i<2000 ; i++){
+      window.location.href = 'index.html';
+    }
+  }
+  // window.location.href = 'index.html';
+  // renderTotal();
+  // alert('payment')
+
+
+}
+renderTotal();

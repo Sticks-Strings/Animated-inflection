@@ -44,6 +44,7 @@ function genarateobject() {
   new Animated('image/piano5.png','piano1',' 30.000');
   new Animated('image/piano6.png', 'piano1','30.000');
   new Animated('image/piano7.png','piano1', '30.000');
+
 }
 genarateobject();
 

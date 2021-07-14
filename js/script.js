@@ -1,4 +1,5 @@
 'use strict';
+document.querySelector('.cart span').textContent=prodtot.length;
 
 function readlocalstorage() {
   let stobj = localStorage.getItem('cart');

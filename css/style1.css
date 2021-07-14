@@ -325,7 +325,7 @@ footer #topfir li{
     display: inline-block;
    margin-left: 75px;
    position: relative;
-   bottom: 60px;
+   bottom: 50px;
 
 }
  .fot #top li {
@@ -348,7 +348,7 @@ user-select: none;
     display: inline-block;
     margin-left: 75px;
     position: relative;
-    bottom: 75px;
+    bottom: 50px;
 }
 .fot #top1 li {
 
@@ -364,7 +364,7 @@ user-select: none;
     /* margin-left: 305px; */
     margin-bottom: 25px;
     -webkit-user-select: none;
--ms-user-select: none; 
+- ms-user-select: none; 
 user-select: none; 
 }
 .fot #top2{
@@ -372,7 +372,7 @@ user-select: none;
 display: inline-block;
 margin-left: 75px;
 position: relative;
-bottom: 75px;
+bottom: 50px;
 }
  .fot #top2 li {
     text-decoration: none;

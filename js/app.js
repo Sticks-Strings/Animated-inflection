@@ -1,5 +1,5 @@
 'use strict';
-let prodtot = 0;
+let prodtot=[];
 let arrProd=[];
 
 function Animated (image, pruductName,price){
@@ -18,6 +18,21 @@ function CartAnimated ( pruductName,price,quant){
   this.saveToLocalStorage();
 }
 
+function savecartToLocalStorage() {
+  let cartOB = JSON.stringify(prodtot);
+  localStorage.setItem('cartprod', cartOB);
+}
+// document.querySelector('.cart span').textContent=prodtot.length;
+function cartreadlocalstorage() {
+  let cartstobj = localStorage.getItem('cartprod');
+
+  let cartnormalobj = JSON.parse(cartstobj);
+  if (cartnormalobj !== null)
+  {
+    prodtot=cartnormalobj;
+  }
+}
+cartreadlocalstorage();
 
 let pickProd=function(event) {
   event.preventDefault();
@@ -28,9 +43,11 @@ let pickProd=function(event) {
   console.log(arrProd[index].pruductName,arrProd[index].price, qv1);
   new CartAnimated (arrProd[index].pruductName,arrProd[index].price, qv1);
   // console.log(arrCart);
-  prodtot = prodtot+1 ;
-  document.querySelector('.cart span').textContent=prodtot;
+  prodtot.push(1);
+  document.querySelector('.cart span').textContent=prodtot.length;
+  savecartToLocalStorage();
 };
+
 
 function genarateobject() {
   new Animated('image/violin.1.png','D Z Strad Violin - Model 365' , '220');
@@ -61,7 +78,7 @@ function genarateobject() {
   new Animated('image/drum5.png','The G5422G-12 serves guitar', '110');
   new Animated('image/drum6.png','The G5422G-12 serves guitar', '98');
   new Animated('image/drum7.png','The G5422G-12 serves guitar', '100');
-  
+
 
 }
 genarateobject();
@@ -139,3 +156,4 @@ CartAnimated.prototype.saveToLocalStorage = function () {
 
   localStorage.setItem('cart', stringObj);
 };
+

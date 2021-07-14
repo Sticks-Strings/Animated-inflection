@@ -11,12 +11,17 @@ function readlocalstorage() {
   let normalobj = JSON.parse(stobj);
   if (normalobj !== null) {
 
+
     for (let x = 0; x < normalobj.length; x++) {
       new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
 
     }
 
+
     rendertable();
+
+
+
   }
 
 }
@@ -46,7 +51,7 @@ function creatTable() {
 
 creatTable();
 let quanttotal;
-let Total;
+let Total=0;
 
 let tdEl = document.createElement('td');
 let removeButton = document.createElement('input');
@@ -136,15 +141,63 @@ readlocalstorage();
 
 
 function renderTotal() {
-  text.textContent = '';
-  text.textContent = `Your orders grand total is : ${Total}`;
-  let TotalContainer = document.getElementById('grandTotal');
-  TotalContainer.textContent = '';
-  TotalContainer.appendChild(text);
-  let parentEl = document.getElementById('parentamount');
-  let amountEl = document.getElementById('amount');
-  amountEl.textContent = `${Total}`+' JOD ';
-  parentEl.appendChild(amountEl);
+  if(Total!==null){
+    text.textContent = '';
+    if(Total!==0){
+
+      text.textContent = `Your orders grand total is : ${Total} JOD`;
+    }else{
+      text.textContent = 'Empty Cart';
+      localStorage.removeItem('cartprod');
+
+    }
+
+    let TotalContainer = document.getElementById('grandTotal');
+    TotalContainer.textContent = '';
+    TotalContainer.appendChild(text);
+    let parentEl = document.getElementById('parentamount');
+    let amountEl = document.getElementById('amount');
+    amountEl.textContent = `${Total}`+' JOD ';
+    parentEl.appendChild(amountEl);
+  }
 
 
 }
+
+let payel = document.getElementById('paybutton');
+
+payel.addEventListener('click',payevent);
+
+function payevent(event){
+  localStorage.removeItem('cart');
+  localStorage.removeItem('cartprod');
+  let Parent = document.getElementById('table');
+  while(Parent.hasChildNodes())
+  {
+    Parent.removeChild(Parent.firstChild);
+  }
+  if(Total!==0){
+    text.textContent='Empty cart';
+    let parentEl = document.getElementById('parentamount');
+    let amountEl = document.getElementById('amount');
+    amountEl.textContent = '0'+' JOD ';
+    parentEl.appendChild(amountEl);
+    swal("done!", "Payment successful!", "success");
+    for(let i=0 ; i<2000 ; i++){
+      window.location.href = 'index.html';
+    }
+  } else{
+    swal("Empty Cart!!", "Payment not successful!", "error");
+    for(let i=0 ; i<2000 ; i++){
+      window.location.href = 'index.html';
+    }
+  }
+  // window.location.href = 'index.html';
+  // renderTotal();
+  // alert('payment')
+
+
+}
+renderTotal();
+
+

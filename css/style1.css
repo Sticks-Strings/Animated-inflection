@@ -256,7 +256,7 @@ transition: 0.4s;
 footer{
     padding: 20px;
     background-color: rgba(19, 24, 27, 0.938);
-    width: 1400px;
+    width: 100%;
 }
 footer .fot{
     /* border: 1px solid red; */

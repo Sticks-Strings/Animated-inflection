@@ -12,7 +12,6 @@ body{
     background-size: cover;
     background-attachment: fixed;
     height: 100vh;
-    opacity: 0.99;
     z-index: 0;
 }
 main{
@@ -21,7 +20,7 @@ main{
 }
 header{
     padding: 15px;
-    background-color:rgba(19, 24, 27, 0.938);
+    background-color:rgb(19, 24, 27);
     position:sticky;
     top: 0;
     z-index: 10;
@@ -31,7 +30,7 @@ header{
 
 .hedEl li{
     display: inline-block;
-    border: 1px solid rgba(19, 24, 27, 0.938);
+    border: 1px solid rgb(19, 24, 27);
     color: rgba(255, 255, 255, 0.774);
     font-weight: 900;
     font-size: 20px;
@@ -42,11 +41,13 @@ header{
 
 .hedEl li:nth-child(2){
     position: relative;
-    left: 120ch;
+    left: 111ch;
+    top: 1ch;
 }
 .hedEl li:nth-child(1){
     position: relative;
-    left: 115ch;
+    left: 108ch;
+    top: 1ch;
 }
 
 
@@ -68,7 +69,7 @@ header{
         transition: 0.5s;
     }
 
-#logo{
+    #logo{
         display: inline-block;
         position: absolute;
         top: -4ch;
@@ -161,9 +162,11 @@ p{
 
 .img-wrapper h2
 {
-	background: tomato;
+	background: rgba(251, 251, 251, 0.479);
 	font-family: Poppins;
-	color: #fff;
+	color: rgb(0, 0, 0);
+    font-size: 22px;
+    font-weight: bold;
 	text-align: center;
 	margin: 0;
 	padding: 10px 0;
@@ -171,7 +174,7 @@ p{
 	bottom: 0;
 	width: 100%;
 	transform: perspective(400px) rotateY(90deg);
-	transform-origin: right;
+	transform-origin:bottom;
 	transition: 1s;
 }
 
@@ -282,7 +285,7 @@ img{
 
 footer{
     padding: 20px;
-    background-color: rgba(19, 24, 27, 0.938);
+    background-color: rgb(19, 24, 27);
     width: 100%;
     display: block;
 }
@@ -312,9 +315,9 @@ footer #topfir li{
       padding: 10px;
       margin-left: 90px;
       margin-bottom: 25px;
-      font-weight: bolder;
+      font-weight: 150;
       font-size: 20px;
-      text-decoration: underline;
+      font-family: fantasy;
       /* -webkit-user-select: none;
   -ms-user-select: none; 
   user-select: none;  */
@@ -424,5 +427,11 @@ font-size: 19px;
         transform: scale(1.4);
         transition: 0.5s;
 }
+#top ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
 
-
+}
+#top ul li a:hover{
+    transform: scale(1.7) ;
+}

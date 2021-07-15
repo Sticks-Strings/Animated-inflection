@@ -1,7 +1,6 @@
 'use strict';
 
 let table = document.getElementById('table');
-console.log(arrCart);
 let cartindex = [];
 let removeIndex = [];
 // load from the local storage
@@ -11,7 +10,7 @@ function readlocalstorage() {
   let normalobj = JSON.parse(stobj);
   if (normalobj !== null) {
 
-
+    //update the arrcart[] to have the same data of the localstorge('cart')
     for (let x = 0; x < normalobj.length; x++) {
       new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
 
@@ -28,7 +27,7 @@ function readlocalstorage() {
 
 
 let th;
-function creatTable() {
+function creatTable() {//to creat the taple
   table.textContent = '';
   let head = document.createElement('tr');
   th = document.createElement('th');
@@ -51,7 +50,7 @@ function creatTable() {
 
 creatTable();
 let quanttotal;
-let Total=0;
+let Total = 0;
 
 let tdEl = document.createElement('td');
 let removeButton = document.createElement('input');
@@ -60,7 +59,8 @@ let key = [];
 let x = 0;
 
 let text = document.createElement('p');
-let rendertable = function () {
+
+let rendertable = function () {//creat of the final taple of receipt with the price.
   Total = 0;
   let trEl;
   // table.appendChild(trEl);
@@ -80,23 +80,17 @@ let rendertable = function () {
       td.textContent = arrCart[y].quant;
     trEl.appendChild(td);
     td = document.createElement('td');
-    if (arrCart[y].quant !== '') {
-      quanttotal = arrCart[y].quant * arrCart[y].price;
-      td.textContent = quanttotal;
-      Total += Number(quanttotal);
-    }
-    else {
-      Total += Number(arrCart[y].price);
-      td.textContent = arrCart[y].price;
-
-    }
+    // to calculate the total prices
+    quanttotal = arrCart[y].quant * arrCart[y].price;
+    td.textContent = quanttotal;
+    Total += Number(quanttotal);
     trEl.appendChild(td);
     removeEl = document.createElement('td');
 
     removeButton = document.createElement('input');
     removeButton.type = 'button';
-    removeButton.value = 'X';
-    removeButton.style.color = 'red';
+    removeButton.value = 'Remove';
+    removeButton.style.color = 'white';
     removeButton.id = `c${y}`;
     cartindex.push(removeButton.id);
 
@@ -106,7 +100,16 @@ let rendertable = function () {
     trEl.appendChild(removeEl);
 
     table.appendChild(trEl);
-
+    // if(y==1){
+    //   let buyEl=document.createElement("button");
+    //   buyEl.id='buy';
+    //   buyEl.textContent='Checkout'
+    //   let divbtnEL=document.getElementById('but');
+    //   divbtnEL.appendChild(buyEl);
+    //   divbtnEL.addEventListener()
+    // }
+    let btn2=document.getElementById('buy');
+    btn2.style.display = 'block';
   }
   renderTotal();
   CartAnimated.prototype.saveToLocalStorage();
@@ -115,22 +118,19 @@ let rendertable = function () {
 
 
 function handl(event) {
-  console.log('clicked');
   event.preventDefault();
   for (let i = 0; i < cartindex.length; i++) {
-
+    //to remove the selected item & remove it's price from the total
     if (event.target.id === `c${i}`) {
 
       Total -= Number(arrCart[i].price);
       arrCart.splice(i, 1);
 
-      // [0,1] splice(0,1) -> 0 is the starting index, 1 is the number of indexes to be removed
-      // => [1] -> 1 will now have index 0 -> splice(0,1)
-      // => []
-
+      // of indexes to be removed
     }
 
   }
+  //re-creat whole table from the begining again from the saved data on the localstore!!
   CartAnimated.prototype.saveToLocalStorage();
   creatTable();
   rendertable();
@@ -141,12 +141,16 @@ readlocalstorage();
 
 
 function renderTotal() {
-  if(Total!==null){
+  if (Total !== null) {
     text.textContent = '';
-    if(Total!==0){
-
+    if (Total !== 0) {
+      //render the grandtotal!!!!
       text.textContent = `Your orders grand total is : ${Total} JOD`;
-    }else{
+    } else {
+      let btn2=document.getElementById('buy');
+      btn2.style.display = 'none';
+      let cardshow = document.getElementById('myDIV');
+      cardshow.style.display = 'none';
       text.textContent = 'Empty Cart';
       localStorage.removeItem('cartprod');
 
@@ -157,7 +161,7 @@ function renderTotal() {
     TotalContainer.appendChild(text);
     let parentEl = document.getElementById('parentamount');
     let amountEl = document.getElementById('amount');
-    amountEl.textContent = `${Total}`+' JOD ';
+    amountEl.textContent = `${Total}` + ' JOD ';
     parentEl.appendChild(amountEl);
   }
 
@@ -166,38 +170,47 @@ function renderTotal() {
 
 let payel = document.getElementById('paybutton');
 
-payel.addEventListener('click',payevent);
+payel.addEventListener('click', payevent);
 
-function payevent(event){
+function payevent(event) {
   localStorage.removeItem('cart');
   localStorage.removeItem('cartprod');
   let Parent = document.getElementById('table');
-  while(Parent.hasChildNodes())
+  while (Parent.hasChildNodes())
+  // to delet hool localstorge of the cart when checkout the payment
   {
     Parent.removeChild(Parent.firstChild);
   }
-  if(Total!==0){
-    text.textContent='Empty cart';
+  if (Total !== 0) {//give the user a sweetalart if there is an itme on the cart or not !!!
+    text.textContent = 'Empty cart';
     let parentEl = document.getElementById('parentamount');
     let amountEl = document.getElementById('amount');
-    amountEl.textContent = '0'+' JOD ';
+    amountEl.textContent = '0 ' + ' JOD';
     parentEl.appendChild(amountEl);
-    swal("done!", "Payment successful!", "success");
-    for(let i=0 ; i<2000 ; i++){
+    swal('done!', 'Payment successful!', 'success');
+    for (let i = 0; i < 3000; i++) {
       window.location.href = 'index.html';
     }
-  } else{
-    swal("Empty Cart!!", "Payment not successful!", "error");
-    for(let i=0 ; i<2000 ; i++){
+  } else {
+    swal('Empty Cart!!', 'Payment not successful!', 'error');
+    for (let i = 0; i < 3000; i++) {
       window.location.href = 'index.html';
     }
   }
-  // window.location.href = 'index.html';
-  // renderTotal();
-  // alert('payment')
-
 
 }
-renderTotal();
+renderTotal();// to hide the payment bar if there is nothing on the begining of the cart page and apper it when click on the puy botton!!
+let btnbuyEL = document.getElementById('buy');
+btnbuyEL.addEventListener('click', myFunction);
+function myFunction() {
+  let cardshow = document.getElementById('myDIV');
+  if (cardshow.style.display === 'none') {
+    cardshow.style.display = 'block';
+    btnbuyEL.removeEventListener();
+  } else {
+    let btn2=document.getElementById('buy');
+    btn2.style.display = 'none';
 
-
+    cardshow.style.display = 'block';
+  }
+}

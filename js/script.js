@@ -1,7 +1,7 @@
 'use strict';
 document.querySelector('.cart span').textContent=prodtot.length;
 
-function readlocalstorage() {
+function readlocalstorage() {// to read the added items from the cart at the moment we refreash the page
   let stobj = localStorage.getItem('cart');
   let normalobj = JSON.parse(stobj);
 
@@ -15,7 +15,7 @@ function readlocalstorage() {
   }
 }
 
-let renderPruduct=function()
+let renderPruduct=function() //to render the the added items from the Animated constructer
 {
   let orodContainerEl = document.getElementById('pruduct-container');
   for(let i=0;i<arrProd.length;i++)
@@ -47,12 +47,8 @@ let renderPruduct=function()
     productEl.appendChild(hpE2);
     productEl.appendChild(formEl);
     orodContainerEl.appendChild(productEl);
-    formEl.addEventListener('submit',pickProd);
+    formEl.addEventListener('submit',pickProd);//to add event listner to each button
   }
 };
 renderPruduct();
-//  Create an event listener for the Add to cart buttons
-// for (let s = 0; s < arrProd.length; s++) {
-//     buttons[s].addEventListener('click', toSelectbutton);
-// }
 readlocalstorage();

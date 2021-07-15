@@ -5,7 +5,6 @@
 html{
     margin: 0;
     padding: 0;
-    height: 100vh;
 }
 body{
     /* background-color: rgba(245, 245, 245, 0.76); */
@@ -13,8 +12,11 @@ body{
     background-size: cover;
     background-attachment: fixed;
     height: 100vh;
-    opacity: 1;
     z-index: 0;
+}
+main{
+    height: 300%;
+
 }
 header{
     padding: 15px;
@@ -28,7 +30,7 @@ header{
 
 .hedEl li{
     display: inline-block;
-    border: 1px solid rgba(19, 24, 27, 0.938);
+    border: 1px solid rgb(19, 24, 27);
     color: rgba(255, 255, 255, 0.774);
     font-weight: 900;
     font-size: 20px;
@@ -39,11 +41,13 @@ header{
 
 .hedEl li:nth-child(2){
     position: relative;
-    left: 120ch;
+    left: 111ch;
+    top: 1ch;
 }
 .hedEl li:nth-child(1){
     position: relative;
-    left: 115ch;
+    left: 108ch;
+    top: 1ch;
 }
 
 
@@ -123,16 +127,7 @@ p{
     border: 3px double rgb(36, 35, 35) ;
     font-family: cursive;
 }
-.logo-video2{
-    /* border:   solid rgb(4, 0, 255); */
-    display: inline-block;
-    position: absolute;
-    top: 120px;
-    /* padding:10px; */
-    margin-bottom: 20px;
-    left: 8%;
-    z-index: -1;
-    } 
+
     #grandTotal{
         background-color: rgba(241, 221, 221, 0.205) ;
         display: inline-block;
@@ -142,23 +137,24 @@ p{
         font-size: 20px;
         border-radius: 5px;
         position: relative;
-        left: 560px;
+        left: 50px;
+        top: 2ch;
     }
 
 
 
 .container {
-    width: 600px;
-    background-color: rgba(192, 182, 182, 0);
-    padding-top: 100px;
-    padding-bottom: 100px
+    width: 25%;
+    position: relative;
+    top:-4%;
+    right: 1%;
 }
 
 .card {
     background-color: rgb(255, 240, 240);
     width: 300px;
     border-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    box-shadow: 0 4px 8px 0 rgba(82, 82, 82, 0.37);
 }
 
 .name {
@@ -191,7 +187,7 @@ p{
     background-color: #fff
 }
 
-.dot {}
+
 
 .head {
     color: #137ff3;
@@ -223,6 +219,7 @@ p{
     height: 28px
 }
 
+
 .back {
     color: #aba4a4;
     font-size: 15px;
@@ -236,12 +233,21 @@ p{
     border-radius: 8px;
     font-size: 17px
 }
+table td input{
+    background-color: rgba(33, 33, 33, 0.212);
+    border: 1px solid rgba(255, 255, 255, 0.808);
+    width: 60px;
+    height: 35px;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+}
 
 footer{
     padding: 20px;
     background-color: rgb(19, 24, 27);
     width: 100%;
-    z-index: 200;
+    /* z-index: 20; */
 }
 
 footer .fot{
@@ -254,10 +260,10 @@ footer .fot{
     /* border: 1px solid red; */
     display: inline-block;
     width: 250px;
-    height: 300px;
+    height: 200px;
     color: rgb(251, 251, 251);
     text-align: center;
-    margin-left: 65px;
+    margin-left: 70px;
 
 }
 
@@ -270,19 +276,15 @@ footer #topfir li{
       padding: 10px;
       margin-left: 90px;
       margin-bottom: 25px;
-      font-weight: bolder;
       font-size: 20px;
-      text-decoration: underline;
-      /* -webkit-user-select: none;
-  -ms-user-select: none; 
-  user-select: none;  */
+      font-family: fantasy;
 }
 .fot #top{
     /* border: 1px solid rgb(255, 0, 157); */
     display: inline-block;
-   margin-left: 75px;
+   margin-left: 70px;
    position: relative;
-   bottom: 60px;
+   bottom: 50px;
 
 }
  .fot #top li {
@@ -296,16 +298,13 @@ footer #topfir li{
     width: 240px;
     padding: 5px;
     margin-bottom: 25px;
-    -webkit-user-select: none;
--ms-user-select: none; 
-user-select: none; 
 }
 .fot #top1{
     /* border: 1px solid red; */
     display: inline-block;
-    margin-left: 75px;
+    margin-left: 70px;
     position: relative;
-    bottom: 75px;
+    bottom: 60px;
 }
 .fot #top1 li {
 
@@ -327,9 +326,9 @@ user-select: none;
 .fot #top2{
     /* border: 1px solid red; */
 display: inline-block;
-margin-left: 75px;
+margin-left: 70px;
 position: relative;
-bottom: 75px;
+bottom: 60px;
 }
  .fot #top2 li {
     text-decoration: none;
@@ -342,14 +341,14 @@ bottom: 75px;
     margin-bottom: 25px;
 }
 #icon {
-    color: rgb(255, 255, 255);
     /* border: 1px solid red; */
+color: rgb(255, 255, 255);
 width: 100%;
 padding: 5px;
 }
 #icon i:nth-child(4) {
     position: relative;
-    left: 83%;
+    left: 75%;
     bottom: 10px;
 }
 #icon i:nth-child(3) {
@@ -373,7 +372,98 @@ font-size: 19px;
 #icon i:hover{
     transform: scale(1.5);
     transition: 0.5s;
-        color: rgba(240, 240, 240, 0.877);
+        color: rgba(251, 251, 251, 0.589);
         transform: scale(1.4);
         transition: 0.5s;
+}
+#top ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+
+}
+#top ul li a:hover{
+    transform: scale(1.7) ;
+}
+
+
+#myDIV{
+    display:none;
+}
+/* .cartbody #buy{
+    border: 1px solid rgba(255, 255, 255, 0.575);
+    padding: 3px;
+    position: relative;
+    left: 32%;
+    bottom:3%;
+    width: 100px;
+    height: 35px;
+border-radius: 5px;
+background-color: rgb(36,35,35);
+color: white;
+font-size: 20px;
+font-weight: bolder;
+display: none;
+} */
+#buy {
+	cursor: pointer;
+	position: relative;
+	left: 32%;
+    bottom:3%;
+    width: 100px;
+    height: 35px;
+	border-radius: 3.75rem;
+	line-height: 1.5rem;
+	font-size: 1rem;
+	font-weight: 100;
+	
+	border: 1px solid #012880;
+	background-image: linear-gradient(-180deg, #463c42 0%, #1f1e1f 100%);
+	box-shadow: 0 1rem 1.25rem 0 rgba(22,75,195,0.50),
+							0 -0.25rem 1.5rem rgb(58, 52, 61) inset,
+							0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset,
+							0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
+}
+
+#buy  span {
+	color: transparent;
+	background-image: linear-gradient(0deg, #EE82DA 0%, #FEFAFD 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
+}
+
+#buy ::before {
+	content: "";
+	display: block;
+	height: 0.25rem;
+	position: absolute;
+	top: 0.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 7.5rem);
+	background: #fff;
+	border-radius: 100%;
+	
+	opacity: 0.7;
+	background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+
+#buy ::after {
+	content: "";
+	display: block;
+	height: 0.25rem;
+	position: absolute;
+	bottom: 0.75rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 7.5rem);
+	background: #fff;
+	border-radius: 100%;
+	
+	filter: blur(1px);
+	opacity: 0.05;
+	background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+#paybutton{
+    
 }

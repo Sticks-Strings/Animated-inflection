@@ -71,6 +71,7 @@ let text = document.createElement('p');
 let rendertable = function () {
   Total = 0;
   let trEl;
+  
   // table.appendChild(trEl);
   for (let y = 0; y < arrCart.length; y++) {
     trEl = document.createElement('tr');
@@ -114,9 +115,14 @@ let rendertable = function () {
     trEl.appendChild(removeEl);
 
     table.appendChild(trEl);
+    let btn2=document.getElementById('buy')
+    btn2.style.display = "block"
+  
+
 
   }
   renderTotal();
+  
   CartAnimated.prototype.saveToLocalStorage();
 };
 
@@ -144,6 +150,7 @@ function handl(event) {
   rendertable();
   renderTotal();
 
+
 }
 readlocalstorage();
 
@@ -157,7 +164,10 @@ function renderTotal() {
     }else{
       text.textContent = 'Empty Cart';
       localStorage.removeItem('cartprod');
-
+      let btn2=document.getElementById('buy')
+      btn2.style.display = "none"
+      let cardshow = document.getElementById("myDIV");
+      cardshow.style.display = "none"
     }
 
     let TotalContainer = document.getElementById('grandTotal');
@@ -171,30 +181,39 @@ function renderTotal() {
 
 
 }
-
+let fEl = document.getElementById('myform');
 let payel = document.getElementById('paybutton');
-
-payel.addEventListener('click',payevent);
+fEl.addEventListener('submit',payevent);
 
 function payevent(event){
+  let nnn=document.getElementById('numcard')
+  //  let lll= event.target.numcard.value
   localStorage.removeItem('cart');
   localStorage.removeItem('cartprod');
+
+ 
+
   let Parent = document.getElementById('table');
   while(Parent.hasChildNodes())
   {
     Parent.removeChild(Parent.firstChild);
   }
-  if(Total!==0){
+
+  if(Total!==0 ){
     text.textContent='Empty cart';
     let parentEl = document.getElementById('parentamount');
     let amountEl = document.getElementById('amount');
     amountEl.textContent = '0'+' JOD ';
     parentEl.appendChild(amountEl);
     swal("done!", "Payment successful!", "success");
-    for(let i=0 ; i<2000 ; i++){
-      window.location.href = 'index.html';
-    }
-  } else{
+    fEl.removeEventListener();
+    //  for(let i=0 ; i<2000 ; i++){
+     
+    //  }
+    
+    window.location.pathname = 'index'
+
+    } else{
     swal("Empty Cart!!", "Payment not successful!", "error");
     for(let i=0 ; i<2000 ; i++){
       window.location.href = 'index.html';
@@ -203,7 +222,11 @@ function payevent(event){
   // window.location.href = 'index.html';
   // renderTotal();
   // alert('payment')
-
+  
+  // window.history.go (-1)
+  //   for(let i=0 ; i<2000 ; i++){
+  //     window.location.href = 'index.html';
+  //    }
 
 }
 renderTotal();

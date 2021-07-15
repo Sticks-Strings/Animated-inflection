@@ -15,14 +15,8 @@ function readlocalstorage() {
       new CartAnimated(normalobj[x].pruductName, normalobj[x].price, normalobj[x].quant);
 
     }
-
-
     rendertable();
-
-
-
   }
-
 }
 
 
@@ -63,7 +57,7 @@ let text = document.createElement('p');
 let rendertable = function () {//creat of the final taple of receipt with the price.
   Total = 0;
   let trEl;
-  // table.appendChild(trEl);
+
   for (let y = 0; y < arrCart.length; y++) {
     trEl = document.createElement('tr');
     trEl.setAttribute('id', `r${y}`);
@@ -100,14 +94,7 @@ let rendertable = function () {//creat of the final taple of receipt with the pr
     trEl.appendChild(removeEl);
 
     table.appendChild(trEl);
-    // if(y==1){
-    //   let buyEl=document.createElement("button");
-    //   buyEl.id='buy';
-    //   buyEl.textContent='Checkout'
-    //   let divbtnEL=document.getElementById('but');
-    //   divbtnEL.appendChild(buyEl);
-    //   divbtnEL.addEventListener()
-    // }
+
     let btn2=document.getElementById('buy');
     btn2.style.display = 'block';
   }
@@ -177,11 +164,11 @@ function payevent(event) {
   localStorage.removeItem('cartprod');
   let Parent = document.getElementById('table');
   while (Parent.hasChildNodes())
-  // to delet hool localstorge of the cart when checkout the payment
+  // to delete whole localstorge of the cart when checkout the payment
   {
     Parent.removeChild(Parent.firstChild);
   }
-  if (Total !== 0) {//give the user a sweetalart if there is an itme on the cart or not !!!
+  if (Total !== 0) {//give the user a sweetalart if there is an item on the cart or not !!!
     text.textContent = 'Empty cart';
     let parentEl = document.getElementById('parentamount');
     let amountEl = document.getElementById('amount');
@@ -199,7 +186,7 @@ function payevent(event) {
   }
 
 }
-renderTotal();// to hide the payment bar if there is nothing on the begining of the cart page and apper it when click on the puy botton!!
+renderTotal();// to hide the payment bar if there is nothing on the begining of the cart page and apper it when click on the puy button!!
 let btnbuyEL = document.getElementById('buy');
 btnbuyEL.addEventListener('click', myFunction);
 function myFunction() {

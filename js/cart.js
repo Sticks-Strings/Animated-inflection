@@ -1,9 +1,9 @@
 'use strict';
 
 let table = document.getElementById('table');
-console.log(arrCart);
+
 let cartindex = [];
-let removeIndex = [];
+
 // load from the local storage
 function readlocalstorage() {
   arrCart = [];
@@ -182,12 +182,12 @@ function payevent(event){
     let amountEl = document.getElementById('amount');
     amountEl.textContent = '0'+' JOD ';
     parentEl.appendChild(amountEl);
-    swal("done!", "Payment successful!", "success");
+    swal('done!', 'Payment successful!', 'success');
     for(let i=0 ; i<2000 ; i++){
       window.location.href = 'index.html';
     }
   } else{
-    swal("Empty Cart!!", "Payment not successful!", "error");
+    swal('Empty Cart!!', 'Payment not successful!', 'error');
     for(let i=0 ; i<2000 ; i++){
       window.location.href = 'index.html';
     }

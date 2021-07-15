@@ -50,7 +50,10 @@ let renderPruduct=function()
     formEl.addEventListener('submit',pickProd);
   }
 };
-renderPruduct();
+readlocalstorag2()
+// renderPruduct();
+
+// readlocalstorag();
 //  Create an event listener for the Add to cart buttons
 // for (let s = 0; s < arrProd.length; s++) {
 //     buttons[s].addEventListener('click', toSelectbutton);

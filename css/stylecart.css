@@ -1,0 +1,469 @@
+*   {
+    box-sizing: border-box;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+}
+body{
+    /* background-color: rgba(245, 245, 245, 0.76); */
+    background: url(https://img3.goodfon.com/wallpaper/nbig/b/78/skripka-smychek-violin-ch-b.jpg) no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    z-index: 0;
+}
+main{
+    height: 300%;
+
+}
+header{
+    padding: 15px;
+    background-color:rgb(19, 24, 27);
+    position:sticky;
+    top: 0;
+    z-index: 10;
+    height: 12.8ch;
+    width: 100%;
+}
+
+.hedEl li{
+    display: inline-block;
+    border: 1px solid rgb(19, 24, 27);
+    color: rgba(255, 255, 255, 0.774);
+    font-weight: 900;
+    font-size: 20px;
+    padding: 10px;
+    margin-left: 25px;
+    z-index: 2;
+}
+
+.hedEl li:nth-child(2){
+    position: relative;
+    left: 111ch;
+    top: 1ch;
+}
+.hedEl li:nth-child(1){
+    position: relative;
+    left: 108ch;
+    top: 1ch;
+}
+
+
+.hedEl li:hover{
+    background-color: rgb(251, 251, 251);
+    color: rgba(0, 0, 0, 0.589);
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.hedEl li a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.774);
+    }
+
+.hedEl li a:hover{
+        background-color: rgb(251, 251, 251);
+        color: rgba(0, 0, 0, 0.589);
+        transition: 0.5s;
+    }
+
+#logo{
+        display: inline-block;
+        position: absolute;
+        top: -4ch;
+        /* border-radius: 50%; */
+        left: 1%;
+        z-index: 1;
+        } 
+
+#p1{
+color: whitesmoke;
+width: 18ch;
+font-size: 3ch;
+font-weight: 100;
+font-family: fantasy;
+position: absolute;
+top: 4.5ch;
+        }        
+
+h2{
+    color: white;
+}
+p{
+    color: white;
+}
+
+.cartbody{
+    /* border:  5px solid red; */
+    width: 100%;
+   height: 100%;
+   padding: 20px;
+   font-family: cursive;
+}
+.cartbody #table {
+    /* border:   solid rgb(4, 0, 255); */
+    display:table-cell;
+    position: relative;
+    left: 5ch ;
+    background-color: rgba(243, 243, 243, 0.137);
+    text-align: center;
+    border-style: groove;
+    font-family: cursive;
+}
+.cartbody #table th {
+    background-color: rgba(136, 4, 4, 0.746);
+    color: white;
+    font-family: cursive;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.cartbody #table tr {
+    background-color: rgba(247, 230, 230, 0.205);
+    color: white;
+    font-weight: bolder;
+    font-size: 15px;
+    border: 3px double rgb(36, 35, 35) ;
+    font-family: cursive;
+}
+
+    #grandTotal{
+        background-color: rgba(241, 221, 221, 0.205) ;
+        display: inline-block;
+        padding: 10px;
+        border: 3px double rgb(255, 255, 255);
+        font-weight: bolder;
+        font-size: 20px;
+        border-radius: 5px;
+        position: relative;
+        left: 50px;
+        top: 2ch;
+    }
+
+
+
+.container {
+    width: 25%;
+    position: relative;
+    top:-4%;
+    right: 1%;
+}
+
+.card {
+    background-color: rgb(255, 240, 240);
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(82, 82, 82, 0.37);
+}
+
+.name {
+    font-size: 15px;
+    color: #403f3f;
+    font-weight: bold
+}
+
+.cross {
+    font-size: 11px;
+    color: #b0aeb7
+}
+
+.pin {
+    font-size: 14px;
+    color: #b0aeb7
+}
+
+.first {
+    border-radius: 8px;
+    border: 1.5px solid #78b9ff;
+    color: #000;
+    background-color: #eaf4ff
+}
+
+.second {
+    border-radius: 8px;
+    border: 1px solid #acacb0;
+    color: #000;
+    background-color: #fff
+}
+
+
+
+.head {
+    color: #137ff3;
+    font-size: 12px;
+}
+#tip{
+    display: block;
+    margin-bottom: 1.5ch;
+}
+
+.dollar {
+    font-size: 18px;
+    color: #097bf7;
+    margin-top: 3ch;
+    margin-left: 0.5ch;
+    font-weight: bolder;
+}
+
+.amount {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 18px
+}
+
+.form-control {
+    font-size: 18px;
+    font-weight: bold;
+    width: 60px;
+    height: 28px
+}
+
+
+.back {
+    color: #aba4a4;
+    font-size: 15px;
+    line-height: 73px;
+    font-weight: 400
+}
+
+.button {
+    width: 150px;
+    height: 60px;
+    border-radius: 8px;
+    font-size: 17px
+}
+table td input{
+    background-color: rgba(33, 33, 33, 0.212);
+    border: 1px solid rgba(255, 255, 255, 0.808);
+    width: 60px;
+    height: 35px;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+footer{
+    padding: 20px;
+    background-color: rgb(19, 24, 27);
+    width: 100%;
+    /* z-index: 20; */
+}
+
+footer .fot{
+    /* border: 1px solid red; */
+    display: inline-block;
+    width: 100%;
+}
+
+.fot #fotlogo{
+    /* border: 1px solid red; */
+    display: inline-block;
+    width: 250px;
+    height: 200px;
+    color: rgb(251, 251, 251);
+    text-align: center;
+    margin-left: 70px;
+
+}
+
+footer #topfir li{
+    /* border: 1px solid rgb(89, 0, 255); */
+      display: inline-block;
+      color: white;
+      text-align: center;
+      width: 220px;
+      padding: 10px;
+      margin-left: 90px;
+      margin-bottom: 25px;
+      font-size: 20px;
+      font-family: fantasy;
+}
+.fot #top{
+    /* border: 1px solid rgb(255, 0, 157); */
+    display: inline-block;
+   margin-left: 70px;
+   position: relative;
+   bottom: 50px;
+
+}
+ .fot #top li {
+   
+    position: relative;
+    top: 0px;
+    text-decoration: none;
+    color: white;
+    /* border: 1px solid whitesmoke; */
+    text-align: center;
+    width: 240px;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+.fot #top1{
+    /* border: 1px solid red; */
+    display: inline-block;
+    margin-left: 70px;
+    position: relative;
+    bottom: 60px;
+}
+.fot #top1 li {
+
+    position: relative;
+    top: 0px;
+   
+    text-decoration: none;
+    color: white;
+    /* border: 1px solid whitesmoke; */
+    text-align: center;
+    width: 240px;
+    padding: 5px;
+    /* margin-left: 305px; */
+    margin-bottom: 25px;
+    -webkit-user-select: none;
+-ms-user-select: none; 
+user-select: none; 
+}
+.fot #top2{
+    /* border: 1px solid red; */
+display: inline-block;
+margin-left: 70px;
+position: relative;
+bottom: 60px;
+}
+ .fot #top2 li {
+    text-decoration: none;
+    color: white;
+    /* border: 1px solid whitesmoke; */
+    text-align: center;
+    width: 240px;
+    padding: 5px;
+    /* margin-left: 605px; */
+    margin-bottom: 25px;
+}
+#icon {
+    /* border: 1px solid red; */
+color: rgb(255, 255, 255);
+width: 100%;
+padding: 5px;
+}
+#icon i:nth-child(4) {
+    position: relative;
+    left: 75%;
+    bottom: 10px;
+}
+#icon i:nth-child(3) {
+    position: relative;
+    left: 78%;
+    bottom: 10px;
+
+}
+#icon i:nth-child(2) {
+    position: relative;
+    left: 73%;
+    bottom: 10px;
+
+}
+#icon p {
+    position: relative;
+top: 20px;
+color: white;
+font-size: 19px;
+}
+#icon i:hover{
+    transform: scale(1.5);
+    transition: 0.5s;
+        color: rgba(251, 251, 251, 0.589);
+        transform: scale(1.4);
+        transition: 0.5s;
+}
+#top ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+
+}
+#top ul li a:hover{
+    transform: scale(1.7) ;
+}
+
+
+#myDIV{
+    display:none;
+}
+/* .cartbody #buy{
+    border: 1px solid rgba(255, 255, 255, 0.575);
+    padding: 3px;
+    position: relative;
+    left: 32%;
+    bottom:3%;
+    width: 100px;
+    height: 35px;
+border-radius: 5px;
+background-color: rgb(36,35,35);
+color: white;
+font-size: 20px;
+font-weight: bolder;
+display: none;
+} */
+#buy {
+	cursor: pointer;
+	position: relative;
+	left: 32%;
+    bottom:3%;
+    width: 100px;
+    height: 35px;
+	border-radius: 3.75rem;
+	line-height: 1.5rem;
+	font-size: 1rem;
+	font-weight: 100;
+	
+	border: 1px solid #012880;
+	background-image: linear-gradient(-180deg, #463c42 0%, #1f1e1f 100%);
+	box-shadow: 0 1rem 1.25rem 0 rgba(22,75,195,0.50),
+							0 -0.25rem 1.5rem rgb(58, 52, 61) inset,
+							0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset,
+							0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
+}
+
+#buy  span {
+	color: transparent;
+	background-image: linear-gradient(0deg, #EE82DA 0%, #FEFAFD 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
+}
+
+#buy ::before {
+	content: "";
+	display: block;
+	height: 0.25rem;
+	position: absolute;
+	top: 0.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 7.5rem);
+	background: #fff;
+	border-radius: 100%;
+	
+	opacity: 0.7;
+	background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+
+#buy ::after {
+	content: "";
+	display: block;
+	height: 0.25rem;
+	position: absolute;
+	bottom: 0.75rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 7.5rem);
+	background: #fff;
+	border-radius: 100%;
+	
+	filter: blur(1px);
+	opacity: 0.05;
+	background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+#paybutton{
+    
+}
